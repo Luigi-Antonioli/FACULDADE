@@ -1,1 +1,30 @@
+/*COMO INSERIR DADOS*/
+
+INSERT INTO    /*inicia um comando*/
+VALUES    /*para informar dados a serem incluídos*/
+
+/*QUAIS SÃO AS RESTRIÇÕES*/
+
+PRIMARY KEY – /*tem as restrições NOT NULL e UNIQUE*/
+NOT NULL – /*para garantir que não terá registro vazio neste campo*/
+UNIQUE – /*para garantir que os registros sejam únicos*/
+CHECK – /*para checar um valor antes de incluir na tab*/
+
+/*FAZENDO A CRIAÇÃO DA TABELA*/
+CREATE TABLE aluno
+(
+	id INT PRIMARY KEY, 
+	nome VARCHAR(100) NOT NULL,
+	cpf CHAR(11) NOT NULL unique,
+	sexo char(1) check (sexo='M' OR sexo='F' OR sexo='O')
+)
+
+/*INSERINDO ALGUNS DADOS NA TABELA*/
+INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('2', 'Maria', '12345678901', 'F');
+INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('3', 'Carlos', '23456789012', 'M');
+INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('4', 'Ana', '34567890123', 'F');
+INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('5', 'Lucas', '45678901234', 'M');
+INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('6', 'Fernanda', '56789012345', 'F');
+
+
 
