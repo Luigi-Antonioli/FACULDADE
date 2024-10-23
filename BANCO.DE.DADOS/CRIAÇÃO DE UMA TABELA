@@ -1,7 +1,11 @@
-/*COMO INSERIR DADOS*/
+/*COMO INSERIR DADOS E COMANDOS*/
 
 INSERT INTO    /*inicia um comando*/
 VALUES    /*para informar dados a serem incluídos*/
+
+/*COMO VISUALIZAR A TABELA*/
+SELECT * FROM nomeDaTabela
+SELECT coluna1, coluna2 FROM nome_da_tabela; /*QUANDO QUER ACESSAR CERTAS COLUNAS EM ESPECÍICO*/
 
 /*QUAIS SÃO AS RESTRIÇÕES*/
 
@@ -16,7 +20,7 @@ CREATE TABLE aluno
 	id INT PRIMARY KEY, 
 	nome VARCHAR(100) NOT NULL,
 	cpf CHAR(11) NOT NULL unique,
-	sexo char(1) check (sexo='M' OR sexo='F' OR sexo='O')
+	sexo char(1) check (sexo='M' OR sexo='F' OR sexo='O') /*O 'CHECK' É USADO PARA VERIFICAR SE O DADO VAI ENTRAR CORRETAMENTE NA TABELA*/
 )
 
 /*INSERINDO ALGUNS DADOS NA TABELA*/
@@ -25,6 +29,7 @@ INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('3', 'Carlos', '23456789012', 'M'
 INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('4', 'Ana', '34567890123', 'F');
 INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('5', 'Lucas', '45678901234', 'M');
 INSERT INTO aluno(id, nome, cpf, sexo) VALUES ('6', 'Fernanda', '56789012345', 'F');
+
 
 
 
