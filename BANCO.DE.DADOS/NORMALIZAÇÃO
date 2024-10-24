@@ -1,0 +1,14 @@
+/*Normalização é um conjunto de regras utilizadas no projeto lógico que servem
+para reestruturar tabelas e atributos, reduzindo assim redundâncias e permitindo
+o correto crescimento do banco de dados. Com isso, bancos com muita
+movimentação garantem sua integridade após remoção, inserção e alteração dos
+dados*/
+/*
+1ª Forma Normal
+- Possui chave primaria
+- Não possui grupos repetitivos
+- Todos seus atributos são atômicos, ou seja, não precisa ser decomposto
+
+  
+
+*/
