@@ -15,25 +15,36 @@ from hr.employees
 )
 
 /*COMANDOS
-
 **AVG**: Calcula a média aritmética dos valores em um conjunto de dados. 
-Exemplo: `SELECT AVG(column_name) FROM table;
+Exemplo: SELECT AVG(column_name) FROM table;
 
 **STDDEV**: Calcula o desvio padrão dos valores, que mede a dispersão dos dados em relação à média. 
-Exemplo: `SELECT STDDEV(column_name) FROM table;
+Exemplo: SELECT STDDEV(column_name) FROM table;
 
 **COUNT**: Conta o número de linhas que atendem a um critério ou simplesmente o número total de linhas em um conjunto de dados.
-Exemplo: `SELECT COUNT(column_name) FROM table;` ou `SELECT COUNT(*) FROM table;
+Exemplo: SELECT COUNT(column_name) FROM table;` ou `SELECT COUNT(*) FROM table;
 
 **SUM**: Calcula a soma total dos valores em um conjunto de dados.
-Exemplo: `SELECT SUM(column_name) FROM table;
+Exemplo: SELECT SUM(column_name) FROM table;
 
 **MAX**: Retorna o valor máximo de uma coluna numérica. 
-Exemplo: `SELECT MAX(column_name) FROM table;
+Exemplo: SELECT MAX(column_name) FROM table;
 
 **VARIANCE**: Calcula a variância dos valores, que é a média dos quadrados das diferenças em relação à média. 
-Exemplo: `SELECT VARIANCE(column_name) FROM table;
+Exemplo: SELECT VARIANCE(column_name) FROM table;
 
 **MIN**: Retorna o valor mínimo de uma coluna numérica. 
-Exemplo: `SELECT MIN(column_name) FROM table;
+Exemplo: SELECT MIN(column_name) FROM table;
+*/
+
+/*USANDO O SELECT PARA FUNÇÕES DE GRUPO*/
+/*
+SELECT [COLUNA] group_function(coluna) 
+FROM tabela
+[WHERE condição] /*A condição WHERE é opcional, esse filtro não pode ser utilizado em apelidos de colunas (alias), serve para filtrar os dados antes de agrupá-lo*/
+[GROUP BY coluna] /*A coluna não calculada pela função de grupo é opcional, no entanto, ao informá-la é obrigatório o uso do GROUP B*/
+[ORDER BY coluna]; /*A ordenação padrão é a crescente, para sobrepor essa ordenação, é utilizado o DESC na clausula ORDER*/
+*/
+
+
 
