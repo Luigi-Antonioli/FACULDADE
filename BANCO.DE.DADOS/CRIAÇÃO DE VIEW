@@ -48,9 +48,13 @@ FROM tabela
 
 A FUNÇAO NVL FORÇA AS FUNÇÕES DE GRUPO A INCLUÍREM VALORES NULOS
 
+/* Calcula a média dos valores na coluna comissao da tabela funcionarios
+substitui valores nulos na coluna comissao por 0 antes de calcular a média.
+Dessa forma, todos os registros com valor nulo serão tratados como zero no cálculo da média*/
 SELECT 
- avg(comission_pct), avg(nvl(comission_pct,0)) /**/
-FROM hr.exmployees
+avg(comissao), avg(nvl(comissao,0)) 
+FROM funcionarios
+
 
 
 
