@@ -1,1 +1,18 @@
+1 - Quais cargos têm comissão média acima de 25%?
 
+select 
+avg(commission_pct) as comissao_media,
+ job_id
+from hr.employees
+
+group by job_id
+having avg(commission_pct)>.25
+order by comissao_media
+
+2- Qual a soma dos salários dos empregados?
+select
+sum(salario)
+job_id
+from.employees
+
+group by job_id
