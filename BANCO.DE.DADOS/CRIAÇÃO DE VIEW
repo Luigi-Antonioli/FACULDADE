@@ -1,4 +1,4 @@
-/*COMO CRIAR UMA VIEW*/
+COMO CRIAR UMA VIEW
 
 CREATE VIEW funcionarios as
 (
@@ -14,7 +14,8 @@ select
 from hr.employees
 )
 
-/*COMANDOS
+COMANDOS
+
 **AVG**: Calcula a média aritmética dos valores em um conjunto de dados. 
 Exemplo: SELECT AVG(column_name) FROM table;
 
@@ -35,16 +36,24 @@ Exemplo: SELECT VARIANCE(column_name) FROM table;
 
 **MIN**: Retorna o valor mínimo de uma coluna numérica. 
 Exemplo: SELECT MIN(column_name) FROM table;
-*/
 
-/*USANDO O SELECT PARA FUNÇÕES DE GRUPO*/
-/*
+
+USANDO O SELECT PARA FUNÇÕES DE GRUPO
+
 SELECT [COLUNA] group_function(coluna) 
-FROM tabela
 [WHERE condição] /*A condição WHERE é opcional, esse filtro não pode ser utilizado em apelidos de colunas (alias), serve para filtrar os dados antes de agrupá-lo*/
 [GROUP BY coluna] /*A coluna não calculada pela função de grupo é opcional, no entanto, ao informá-la é obrigatório o uso do GROUP B*/
 [ORDER BY coluna]; /*A ordenação padrão é a crescente, para sobrepor essa ordenação, é utilizado o DESC na clausula ORDER*/
-*/
+FROM tabela
+
+A FUNÇAO NVL FORÇA AS FUNÇÕES DE GRUPO A INCLUÍREM VALORES NULOS
+
+SELECT 
+ avg(comission_pct), avg(nvl(comission_pct,0)) /**/
+FROM hr.exmployees
+
+
+
 
 
 
