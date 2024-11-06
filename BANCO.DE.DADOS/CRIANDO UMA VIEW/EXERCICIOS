@@ -27,6 +27,8 @@ select
 from funcionarios
 
 5. Quantos funcionários trabalham na empresa?
+select count(*) AS quantidade_funcionarios
+from funcionarios
 
 
 
