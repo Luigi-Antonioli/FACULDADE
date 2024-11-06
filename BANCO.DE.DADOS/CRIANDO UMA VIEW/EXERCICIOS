@@ -1,4 +1,4 @@
-1 - Quais cargos têm comissão média acima de 25%?
+1. Quais cargos têm comissão média acima de 25%?
 
 select 
 avg(commission_pct) as comissao_media,
@@ -9,10 +9,26 @@ group by job_id
 having avg(commission_pct)>.25
 order by comissao_media
 
-2- Qual a soma dos salários dos empregados?
+2. Qual a soma dos salários dos empregados?
 select
 sum(salario)
 job_id
 from.employees
-
 group by job_id
+
+3. Qual é o salário mais baixo?
+select
+	min(salario) as menor_salario
+from funcionarios
+
+4. Qual é o salário mais alto? 
+select 
+	max(salario) as maior_salario
+from funcionarios
+
+5. Quantos funcionários trabalham na empresa?
+
+
+
+
+
