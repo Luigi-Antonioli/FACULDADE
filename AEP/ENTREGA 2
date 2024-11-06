@@ -1,0 +1,16 @@
+NOSSO FOCO SERÁ EM FAZER UM
+Scanner de Vulnerabilidades (em C ou Python)
+
+O que faz: O scanner de vulnerabilidades basicamente verifica a presença de falhas conhecidas em serviços, portas abertas ou configurações inseguras no sistema. 
+Isso pode ser feito com um script simples que verifica portas de rede (por exemplo, usando socket programming em C ou módulos de rede em Python), 
+procurando por vulnerabilidades como versões antigas de serviços ou falhas em software amplamente conhecido.
+
+Por que é mais simples:
+
+O conceito de varredura de portas e serviços é bem documentado e existem várias bibliotecas para ajudar com essa parte.
+Usar C para isso é viável, mas pode ser mais difícil e demorado se você não tiver muita familiaridade com sockets e manipulação de redes. 
+Python pode ser uma escolha mais simples e rápida para protótipos, devido à abundância de bibliotecas como socket, nmap ou requests.
+
+Implementação:
+Em C, você pode usar a biblioteca socket.h para fazer um simples scanner de portas. O código pode ser relativamente curto e direto.
+Em Python, há bibliotecas como nmap que podem automatizar o processo de varredura de portas e identificar vulnerabilidades conhecidas.
