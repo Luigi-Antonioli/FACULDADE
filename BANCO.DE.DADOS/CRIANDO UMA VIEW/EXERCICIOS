@@ -1,36 +1,58 @@
 1. Quais cargos têm comissão média acima de 25%?
-
-select 
-avg(commission_pct) as comissao_media,
- job_id
-from hr.employees
-
-group by job_id
-having avg(commission_pct)>.25
-order by comissao_media
+SELECT AVG(commission_pct) AS comissao_media, job_id FROM hr.employees
+GROUP BY job_id
+HAVING AVG(commission_pct)>.25
+ORDER BY comissao_media
 
 2. Qual a soma dos salários dos empregados?
-select
-sum(salario)
+SELECT SUM(salario)
 job_id
-from.employees
-group by job_id
+FROM hr.employees
+GROUP BY job_id
 
 3. Qual é o salário mais baixo?
-select
-	min(salario) as menor_salario
-from funcionarios
+SELECT MIN(salario) AS menor_salario
+FROM funcionarios
 
 4. Qual é o salário mais alto? 
-select 
-	max(salario) as maior_salario
-from funcionarios
+SELECT MAX(salario) AS maior_salario
+FROM funcionarios
 
 5. Quantos funcionários trabalham na empresa?
-select count(*) AS quantidade_funcionarios
-from funcionarios
+SELECT COUNT(*) AS quantidade_funcionarios
+FROM funcionarios
 
-6. 
+6. Qual a soma dos salários dos empregados por departamento? 
+SELECT id_departamento, AVG(salario) AS media_salarial
+FROM funcionarios
+GROUP BY id_departamento;
+
+7. Qual é o salário mais baixo por departamento? 
+SELECT id_departamento, SUM(salario) AS soma_salarial
+FROM funcionarios
+GROUP BY id_departamento;
+
+8. Qual é o salário mais alto por departamento? 
+SELECT id_departamento, MIN(salario) AS soma_salarial
+FROM funcionarios
+GROUP BY id_departamento;
+
+9. Qual a quantidade de funcionários por departamento? 
+SELECT id_departamento, MAX(salario) AS soma_salarial
+FROM funcionarios
+GROUP BY id_departamento;
+
+10. Qual a média dos salários dos empregados por departamento e por Função?
+SELECT id_departamento, COUNT(ID_FUNC) AS soma_funcionarios
+FROM funcionarios
+GROUP BY id_departamento;
+
+11. Qual a soma dos salários dos empregados por departamento e por Função? 
+SELECT id_departamento, id_cargo, AVG(salario) AS media_salario
+FROM funcionarios
+GROUP BY id_departamento, id_cargo;
+
+12. Qual é o salário mais baixo por Departamento e por Função?
 
 
 
