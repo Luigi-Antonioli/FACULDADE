@@ -43,16 +43,62 @@ FROM funcionarios
 GROUP BY id_departamento;
 
 10. Qual a média dos salários dos empregados por departamento e por Função?
-SELECT id_departamento, COUNT(ID_FUNC) AS soma_funcionarios
-FROM funcionarios
-GROUP BY id_departamento;
-
-11. Qual a soma dos salários dos empregados por departamento e por Função? 
 SELECT id_departamento, id_cargo, AVG(salario) AS media_salario
 FROM funcionarios
 GROUP BY id_departamento, id_cargo;
 
+11. Qual a soma dos salários dos empregados por departamento e por Função? 
+SELECT id_departamento, COUNT(ID_FUNC) AS soma_funcionarios
+FROM funcionarios
+GROUP BY id_departamento;
+
 12. Qual é o salário mais baixo por Departamento e por Função?
+SELECT id_departamento, id_cargo, MIN(salario) AS menor_salario
+FROM funcionarios
+GROUP BY id_cargo, id_departamento
+ORDER BY id_departamento;
+
+13. Qual é o salário mais alto por Função? 
+SELECT id_cargo, max(salario) AS maior_salario
+FROM funcionarios
+GROUP BY id_cargo
+
+14. Qual a quantidade de funcionários por departamento e por Função?
+SELECT id_departamento, id_cargo, count(id_func) AS quant_funcionarios
+FROM funcionarios
+GROUP BY id_departamento, id_cargo
+ORDER BY id_departamento;
+
+15. Determine quantos empregados têm a função SA_REP.
+SELECT id_cargo, count(id_func) AS quant_funci_cargo
+FROM funcionarios
+WHERE id_cargo = 'SA_REP'
+GROUP BY id_cargo;
+
+16. Determine a diferença entre o salário mais alto e mais baixo.
+SELECT MAX(salario) AS maior_salario, MIN(salario) AS menor_salario, 
+MAX(salario) - MIN(salario) AS diferenca_salario
+FROM funcionarios;
+
+17. Determine a diferença entre o salário mais alto e mais baixo por departamento 
+SELECT id_Departamento,
+    MAX(salario) AS maior_salario, 
+    MIN(salario) AS menor_salario, 
+    MAX(salario) - MIN(salario) AS diferenca_salario
+FROM funcionarios
+GROUP BY id_departamento
+ORDER BY id_departamento;
+
+18. Encontre todos os departamentos que têm mais de três empregados
+
+19. Verifique se todos os números de empregado são únicos.
+
+20. Qual é o maior salário com comissão (considere a comissão como um ganho percentual sobre o
+salário)?
+
+21. Qual cargo tem maior comissão?
+
+22.
 
 
 
