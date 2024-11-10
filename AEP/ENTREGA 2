@@ -1,8 +1,136 @@
-Definir uma Estrutura de Dados Complexa para Vulnerabilidades
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <locale.h>
+#include <unistd.h> // para a função sleep()
 
-Pra começar vamos aprofundar a estrutura de dados que estamos usando para representar vulnerabilidades.
-Ao criar esta estrutura, nosso objetivo é simular de maneira organizada as informações essenciaias sobre
-cada vulnerabilidade. Essa simulação imita o que sistemas de segurança reais fazem ao armazenar detalhes 
-para análise e correção.
+#define MAX_VULNERABILIDADES 5  // número máximo de vulnerabilidades
 
+struct Vulnerabilidade {
+    int id;
+    char nome[50];
+    int severidade; 
+    int corrigido;
+    char data[11]; 
+    char tipo_ataque[50];
+};
 
+void gerarVulnerabilidade(struct Vulnerabilidade* v, int id) {
+    // lista de ataques para simular no sistema
+    char* tipos[] = {"Buffer Overflow", "Injeção de SQL", "Cross-Site Scripting", 
+                     "Injeção de Comandos", "Injeção de XML", "Falha de Autenticação", 
+                     "Deserialização Insegura", "Divulgação de Informação", 
+                     "Exposição de Dados Sensíveis", "Injeção LDAP"};
+
+    // gerador de valores aleatórios para os campos
+    v->id = id; 
+    strcpy(v->nome, tipos[rand() % 5]); 
+    v->severidade = rand() % 5 + 1; 
+    v->corrigido = 0; 
+    
+    // gerador de data aleatória
+    snprintf(v->data, sizeof(v->data), "%02d-%02d-2024", rand() % 31 + 1, rand() % 12 + 1);
+    
+    // gerador de tipo de ataque aleatório
+    strcpy(v->tipo_ataque, tipos[rand() % 10]);
+}
+
+// função que exibe uma vulnerabilidade e suas informações
+void exibirVulnerabilidade(struct Vulnerabilidade v) {
+    printf("Vulnerabilidade ID: %d\n", v.id);
+    printf("Nome: %s\n", v.nome);
+    printf("Severidade: %d\n", v.severidade);
+    printf("Data de Detecção: %s\n", v.data);
+    printf("Tipo de Ataque: %s\n", v.tipo_ataque);
+    printf("-----------------------------------------------------------------------------------------\n\n");
+    sleep(1);
+}
+
+// função que tenta corrigir todas as vulnerabilidades restantes de severidade menor ou igual a 3
+void corrigirTodasVulnerabilidades(struct Vulnerabilidade vulnerabilidades[], int idsNaoCorrigidos[], int totalNaoCorrigidos) {
+    int i, index, j;  // Declare a variável i fora do loop interno
+
+    for (i = 0; i < totalNaoCorrigidos; i++) {
+        index = idsNaoCorrigidos[i];
+        
+        // Verifica se a severidade é menor ou igual a 3 antes de corrigir
+        if (index < MAX_VULNERABILIDADES && vulnerabilidades[index].severidade <= 3 && vulnerabilidades[index].corrigido == 0) {
+            vulnerabilidades[index].corrigido = 1;  // Marca como corrigido
+            printf("\nCorrigindo automaticamente");
+            
+            // Exibe os pontos com pausa para dar dinamismo
+            for (j = 0; j < 5; j++) {  // Use uma variável separada (j) no loop interno
+                printf(".");
+                fflush(stdout);  // Garante que os pontos sejam exibidos imediatamente
+                usleep(500000);  // Pausa de 500 milissegundos
+            }
+
+            printf("\nVulnerabilidade ID: %d corrigida com sucesso.\n", vulnerabilidades[index].id);
+        }
+    }
+}
+
+// função que simula a correção de uma vulnerabilidade com severidade maior que 2
+void corrigirVulnerabilidadeAlta(struct Vulnerabilidade vulnerabilidades[], int indice, int recolherPerdidos[], int* contadorNaoCorrigidos) {
+    // verifica se a vulnerabilidade tem severidade maior que 2 e não foi corrigida
+    if (vulnerabilidades[indice].severidade > 2 && vulnerabilidades[indice].corrigido == 0) {
+        vulnerabilidades[indice].corrigido = 1;  // Marca como corrigido
+        printf("Vulnerabilidade ID: %d corrigida com sucesso!\n", vulnerabilidades[indice].id);
+    } else {
+        recolherPerdidos[*contadorNaoCorrigidos] = indice;  // Armazena o índice da vulnerabilidade não corrigida
+        (*contadorNaoCorrigidos)++;
+    }
+}
+
+// Função para monitorar e corrigir vulnerabilidades
+void monitorarVulnerabilidades(struct Vulnerabilidade vulnerabilidades[], int total_vulns) {
+    int recolherPerdidos[MAX_VULNERABILIDADES];
+    int contadorNaoCorrigidos = 0;
+    int verif = 0;
+    int i = 0;
+
+    for (i = 0; i < total_vulns; i++) {
+        if (vulnerabilidades[i].corrigido == 0) {
+            corrigirVulnerabilidadeAlta(vulnerabilidades, i, recolherPerdidos, &contadorNaoCorrigidos);
+        }
+    }
+		printf("\n-----------------------------------------------------------------------------------------");
+    do {
+				printf("\nDeseja corrigir as vulnerabilidades restantes com severidade menor ou igual a 3?\n");
+        printf("\nDIGITE 1 para SIM / DIGITE 2 para NÃO: ");
+        scanf("%i", &verif);
+    printf("-----------------------------------------------------------------------------------------\n");    
+    } while (verif != 1 && verif != 2);
+
+    if (verif == 1) {
+        corrigirTodasVulnerabilidades(vulnerabilidades, recolherPerdidos, contadorNaoCorrigidos);
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+    srand(time(NULL));  // inicializa o gerador de números aleatórios com base no tempo atual
+
+    int total_vulns = MAX_VULNERABILIDADES;
+    struct Vulnerabilidade vulnerabilidades[MAX_VULNERABILIDADES];
+    int i;
+
+    // gerador de vulnerabilidades aleatórias
+    for (i = 0; i < MAX_VULNERABILIDADES; i++) {
+        gerarVulnerabilidade(&vulnerabilidades[i], i + 1);
+    }
+
+    // exibição das vulnerabilidades geradas
+    printf("-----------------------------------------------------------------------------------------");
+		printf("\nVulnerabilidades Geradas:\n\n");
+    for (i = 0; i < MAX_VULNERABILIDADES; i++) {
+        exibirVulnerabilidade(vulnerabilidades[i]);
+    }
+
+    // monitorar e corrigir as vulnerabilidades
+    printf("Monitorando e corrigindo vulnerabilidades...\n\n");
+    monitorarVulnerabilidades(vulnerabilidades, MAX_VULNERABILIDADES);
+
+    return 0;
+}
