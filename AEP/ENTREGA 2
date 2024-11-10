@@ -100,7 +100,6 @@ void monitorarVulnerabilidades(struct Vulnerabilidade vulnerabilidades[], int to
 				printf("\nDeseja corrigir as vulnerabilidades restantes com severidade menor ou igual a 3?\n");
         printf("\nDIGITE 1 para SIM / DIGITE 2 para NÃO: ");
         scanf("%i", &verif);
-    printf("-----------------------------------------------------------------------------------------\n");    
     } while (verif != 1 && verif != 2);
 
     if (verif == 1) {
@@ -111,7 +110,19 @@ void monitorarVulnerabilidades(struct Vulnerabilidade vulnerabilidades[], int to
 int main() {
     setlocale(LC_ALL, "Portuguese");
     srand(time(NULL));  // inicializa o gerador de números aleatórios com base no tempo atual
-
+		
+		printf("                _____ _________    _   ___   ____________ \n");
+		usleep(60000);
+    printf("               / ___// ____/   |  / | / / | / / ____/ __ \\ \n");
+    usleep(60000);
+    printf("               \\__ \\/ /   / /| | /  |/ /  |/ / __/ / /_/ / \n");
+    usleep(60000);
+    printf("              ___/ / /___/ ___ |/ /|  / /|  / /___/ _, _/  \n");
+    usleep(60000);
+    printf("             /____/\\____/_/  |_/_/ |_/_/ |_/_____/_/ |_|  \n");
+		sleep(1);
+		system("cls");
+		
     int total_vulns = MAX_VULNERABILIDADES;
     struct Vulnerabilidade vulnerabilidades[MAX_VULNERABILIDADES];
     int i;
