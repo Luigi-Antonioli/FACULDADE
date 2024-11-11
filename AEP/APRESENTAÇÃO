@@ -1,0 +1,24 @@
+Parte 1: Introdução e Contexto
+
+- Objetivo do Projeto: Explique brevemente o propósito do scanner de vulnerabilidades e a importância da simulação de detecção de ataques.
+- Tecnologias Usadas: Mencione as plataformas reais (como OpenVAS ou Nessus) que inspiraram a simulação, para dar contexto ao público sobre
+como esses sistemas atuam no mundo real.
+- Demonstração da Interface Simulada: Apresente a interface da simulação, se aplicável, explicando como ela identifica vulnerabilidades com base nos critérios definidos.
+
+Parte 2: Explicação Técnica e Funcionamento
+
+- Detectando e Classificando Ataques: Fale sobre o processo de reconhecimento e classificação das vulnerabilidades de acordo com a 
+severidade (alta, média, baixa).
+- Correção Automática de Vulnerabilidades Críticas: Explique como o sistema tenta corrigir automaticamente as vulnerabilidades mais graves.
+É interessante mostrar o código ou trechos importantes que ilustram essa funcionalidade.
+- Interação com o Usuário: Mostre a parte em que o sistema pergunta ao usuário se deseja corrigir as vulnerabilidades de baixa gravidade 
+e como ele decide o próximo passo.
+
+Parte 3: Conclusão e Relevância
+
+- Benefícios da Automação de Segurança: Discuta brevemente os benefícios de automatizar a detecção e correção de vulnerabilidades, 
+comparando com a abordagem manual.
+- Possíveis Aplicações e Evolução do Projeto: Explique como o trabalho se alinha com práticas de segurança real e como ele pode ser 
+aprimorado com o uso de IA, blockchain, ou outras tecnologias mencionadas.
+- Encerramento: Conclua com uma síntese da importância do projeto e as possibilidades de uso dessa solução para proteção cibernética.
+
