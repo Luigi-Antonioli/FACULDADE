@@ -1,0 +1,69 @@
+1. Seleção Simples de Dados
+  Como visualizar todos os dados da tabela de clientes?
+  Quais informações de nome e contato estão registradas para cada cliente?
+  Como listar as categorias de produtos disponíveis no estoque?
+  Como exibir apenas os títulos e autores na tabela de livros?
+  Como recuperar todos os dados da tabela de funcionários?
+
+2. Filtragem de Dados (WHERE)
+  Como encontrar clientes que residem em uma cidade específica?
+  Como listar os pedidos feitos em uma data específica?
+  Quais produtos têm um preço superior a um valor determinado?
+  Como localizar funcionários contratados em um ano específico?
+  Como exibir as vendas realizadas em uma determinada região?
+
+3. Ordenação de Resultados (ORDER BY)
+  Como organizar os produtos do mais caro ao mais barato?
+  Como ordenar os funcionários por ordem alfabética de sobrenome?
+  Como listar os pedidos mais recentes primeiro?
+  Como classificar os clientes pelo total de compras, do maior para o menor?
+  Como exibir os livros organizados por data de publicação?
+
+4. Funções de Agregação (COUNT, SUM, AVG, MAX, MIN)
+  Quantos registros de pedidos existem na tabela de vendas?
+  Qual é o valor total das vendas realizadas no último mês?
+  Qual é a média salarial dos funcionários?
+  Qual é o preço máximo registrado entre os produtos?
+  Qual é a quantidade mínima de unidades disponíveis em estoque?
+
+5. Agrupamento de Dados (GROUP BY)
+  Quantos clientes estão registrados em cada cidade?
+  Como visualizar o total de vendas por mês?
+  Quantos pedidos foram feitos por cada cliente?
+  Quantos funcionários existem por departamento?
+  Qual é o total de produtos em cada categoria?
+
+6. Junções entre Tabelas (JOIN)
+  Como visualizar o nome dos clientes e os respectivos pedidos?
+  Como exibir os produtos juntamente com o nome do fornecedor?
+  Como listar funcionários e os departamentos em que trabalham?
+  Como recuperar detalhes dos pedidos e os produtos incluídos em cada um?
+  Como visualizar o histórico de pedidos e as datas de envio correspondentes?
+
+7. Filtragem de Resultados Agregados (HAVING)
+  Como listar fornecedores que venderam mais de 100 unidades de produtos?
+  Quais clientes realizaram mais de cinco pedidos?
+  Como exibir produtos com um valor de estoque superior à média?
+  Quais categorias de produtos têm mais de dez itens disponíveis?
+  Como listar regiões com vendas superiores a um valor específico?
+
+8. Subconsultas (Subqueries)
+  Como visualizar produtos com preço superior à média dos preços?
+  Quais clientes ainda não fizeram pedidos?
+  Como listar funcionários com salário acima da média salarial?
+  Como exibir os produtos cujo fornecedor é específico?
+  Como identificar clientes que realizaram pedidos com valor superior a um limite?
+
+9. Operações de Manipulação de Dados (INSERT, UPDATE, DELETE)
+  Como adicionar um novo cliente na tabela de clientes?
+  Como atualizar o preço de todos os produtos em 10%?
+  Como remover pedidos realizados antes de um ano específico?
+  Como inserir novos registros de vendas na tabela de pedidos?
+  Como excluir clientes inativos?
+
+10. Visões (Views)
+  Como criar uma visão para exibir apenas clientes ativos?
+  Como criar uma visão para mostrar o nome do cliente, ID do pedido e valor total?
+  Como visualizar apenas funcionários que estão no departamento de vendas?
+  Como criar uma visão para mostrar o inventário de produtos disponíveis?
+  Como listar as vendas feitas em um determinado período usando uma visão?
