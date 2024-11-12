@@ -41,18 +41,23 @@ WHERE regiao = 'Sul';
 3. Ordenação de Resultados (ORDER BY)
   Como organizar os produtos do mais caro ao mais barato?
 SELECT * FROM produtos
-ORDER BY preco DESC; -- 'DESC' COMANDO PARA IR EM ORDEM DECRESCENTE
+ORDER BY preco DESC; --'DESC' COMANDO PARA IR EM ORDEM DECRESCENTE
 -----------------------------------------------------------------------------
   Como ordenar os funcionários por ordem alfabética de sobrenome?
 SELECT * FROM funcionarios
-ORDER BY sobrenome ASC; -- 'ASC' COMANDO PARA IR EM ORDEM CRESCENTE
+ORDER BY sobrenome ASC; --'ASC' COMANDO PARA IR EM ORDEM CRESCENTE
 -----------------------------------------------------------------------------
   Como listar os pedidos mais recentes primeiro?
-
+SELECT * FROM pedidos
+ORDER BY data_pedido DESC; --'DESC' COMANDO PARA IR EM ORDEM DECRESCENTE
 -----------------------------------------------------------------------------
   Como classificar os clientes pelo total de compras, do maior para o menor?
+SELECT cliente_id, total_compras FROM clientes
+ORDER BY total_compras DESC; --'DESC' COMANDO PARA IR EM ORDEM DECRESCENTE
 -----------------------------------------------------------------------------
   Como exibir os livros organizados por data de publicação?
+SELECT * FROM livros
+ORDER BY data_publicacao DESC; --'DESC' COMANDO PARA IR EM ORDEM DECRESCENTE
 -----------------------------------------------------------------------------
 
 4. Funções de Agregação (COUNT, SUM, AVG, MAX, MIN)
