@@ -1,23 +1,59 @@
 1. Seleção Simples de Dados
+
   Como visualizar todos os dados da tabela de clientes?
+SELECT * FROM clientes;
+-----------------------------------------------------------------------------
   Quais informações de nome e contato estão registradas para cada cliente?
+SELECT nome, contato FROM clientes;
+-----------------------------------------------------------------------------
   Como listar as categorias de produtos disponíveis no estoque?
+SELECT DISTINCT categoria FROM produtos;
+-----------------------------------------------------------------------------
   Como exibir apenas os títulos e autores na tabela de livros?
+SELECT titulo, autor FROM livros;
+-----------------------------------------------------------------------------
   Como recuperar todos os dados da tabela de funcionários?
+SELECT * FROM funcionarios;
+-----------------------------------------------------------------------------
 
 2. Filtragem de Dados (WHERE)
   Como encontrar clientes que residem em uma cidade específica?
+SELECT * FROM clientes
+WHERE cidade = 'São Paulo';
+-----------------------------------------------------------------------------
   Como listar os pedidos feitos em uma data específica?
+SELECT * FROM pedidos
+WHERE data_pedido = '2024-01-15';
+-----------------------------------------------------------------------------
   Quais produtos têm um preço superior a um valor determinado?
+SELECT * FROM produtos
+WHERE preco > 50;
+-----------------------------------------------------------------------------
   Como localizar funcionários contratados em um ano específico?
+SELECT * FROM funcionarios
+WHERE EXTRACT(YEAR FROM data_contratacao) = 2023;
+-----------------------------------------------------------------------------
   Como exibir as vendas realizadas em uma determinada região?
+SELECT * FROM vendas
+WHERE regiao = 'Sul';
+-----------------------------------------------------------------------------
 
 3. Ordenação de Resultados (ORDER BY)
   Como organizar os produtos do mais caro ao mais barato?
+SELECT * FROM produtos
+ORDER BY preco DESC; -- 'DESC' COMANDO PARA IR EM ORDEM DECRESCENTE
+-----------------------------------------------------------------------------
   Como ordenar os funcionários por ordem alfabética de sobrenome?
+SELECT * FROM funcionarios
+ORDER BY sobrenome ASC; -- 'ASC' COMANDO PARA IR EM ORDEM CRESCENTE
+-----------------------------------------------------------------------------
   Como listar os pedidos mais recentes primeiro?
+
+-----------------------------------------------------------------------------
   Como classificar os clientes pelo total de compras, do maior para o menor?
+-----------------------------------------------------------------------------
   Como exibir os livros organizados por data de publicação?
+-----------------------------------------------------------------------------
 
 4. Funções de Agregação (COUNT, SUM, AVG, MAX, MIN)
   Quantos registros de pedidos existem na tabela de vendas?
