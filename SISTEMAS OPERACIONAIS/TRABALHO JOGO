@@ -1,1 +1,89 @@
-TESTEE
+AQUI ESTÁ O CÓDIGO DO JOGO FEITO
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+void exibirTabuleiro(char tabuleiro[3][3]) {
+    printf("          JOGO DA VELHA\n\n");
+    printf("            1   2   3\n");
+    printf("          -------------\n");
+    int i, j;
+    for (i = 0; i < 3; i++) {
+        printf("        %d ", i+1);
+        for (j = 0; j < 3; j++) {
+            printf(" %c ", tabuleiro[i][j]);
+            if (j < 2) printf(" |");
+        }
+        printf("\n");
+        if (i < 2) printf("          -------------\n");
+    }
+}
+
+bool verificarVencedor(char tabuleiro[3][3], char jogador) {
+    int i, j;
+
+    for (i = 0; i < 3; i++) {
+        if (tabuleiro[i][0] == jogador && tabuleiro[i][1] == jogador && tabuleiro[i][2] == jogador)
+            return true;
+    }
+
+    for (j = 0; j < 3; j++) {
+        if (tabuleiro[0][j] == jogador && tabuleiro[1][j] == jogador && tabuleiro[2][j] == jogador)
+            return true;
+    }
+
+    if (tabuleiro[0][0] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][2] == jogador)
+        return true;
+    if (tabuleiro[0][2] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][0] == jogador)
+        return true;
+
+    return false;
+}
+
+int main() {
+    char tabuleiro[3][3] = {
+        {' ', ' ', ' '},
+        {' ', ' ', ' '},
+        {' ', ' ', ' '}
+    };
+    bool jogoAtivo = true;
+    char jogadorAtual = 'X';
+
+    while (jogoAtivo) {
+        system("cls");
+
+        exibirTabuleiro(tabuleiro);
+
+        int linha, coluna;
+
+        printf("\nJogador %c, insira a linha (1 a 3): ", jogadorAtual);
+        scanf("%d", &linha);
+
+        printf("Jogador %c, insira a coluna (1 a 3): ", jogadorAtual);
+        scanf("%d", &coluna);
+
+        linha -= 1;
+        coluna -= 1;
+
+        if (linha >= 0 && linha < 3 && coluna >= 0 && coluna < 3 && tabuleiro[linha][coluna] == ' ') {
+            tabuleiro[linha][coluna] = jogadorAtual;
+
+            if (verificarVencedor(tabuleiro, jogadorAtual)) {
+                system("cls");
+                exibirTabuleiro(tabuleiro);
+                printf("Jogador %c venceu!\n", jogadorAtual);
+                jogoAtivo = false;
+            } else {
+                jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
+            }
+        } else {
+            printf("Posição inválida. Pressione Enter para tentar novamente.\n");
+            getchar();
+            getchar();
+        }
+    }
+
+    return 0;
+}
+
