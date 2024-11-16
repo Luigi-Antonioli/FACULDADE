@@ -3,6 +3,8 @@ AQUI ESTÁ O CÓDIGO DO JOGO FEITO
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <winsock2.h>
+#include <pthread.h>
 
 void exibirTabuleiro(char tabuleiro[3][3]) {
     printf("          JOGO DA VELHA\n\n");
@@ -41,8 +43,11 @@ bool verificarVencedor(char tabuleiro[3][3], char jogador) {
     return false;
 }
 
-int main() {
-    char tabuleiro[3][3] = {
+int main() { 
+		
+		
+		    
+		char tabuleiro[3][3] = {
         {' ', ' ', ' '},
         {' ', ' ', ' '},
         {' ', ' ', ' '}
@@ -59,11 +64,10 @@ int main() {
 
         printf("\nJogador %c, insira a linha (1 a 3): ", jogadorAtual);
         scanf("%d", &linha);
-
+				linha -= 1;
+				
         printf("Jogador %c, insira a coluna (1 a 3): ", jogadorAtual);
         scanf("%d", &coluna);
-
-        linha -= 1;
         coluna -= 1;
 
         if (linha >= 0 && linha < 3 && coluna >= 0 && coluna < 3 && tabuleiro[linha][coluna] == ' ') {
@@ -86,4 +90,5 @@ int main() {
 
     return 0;
 }
+
 
