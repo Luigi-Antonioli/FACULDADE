@@ -1,0 +1,43 @@
+__________________________________________________________________________________________________________________________________
+GERANDO O PROJETO NO SPRING INITIALIZER
+1. Acesse o site: https://start.spring.io/ 
+
+2. Configure as opções do projeto:
+- Project: Maven.
+- Language: Java.
+- Spring Boot: Selecione a versão estável mais recente (3.x ou superior).
+- Group: com.example (ou outro de sua escolha).
+- Artifact: kanban-api.
+- Name: KanbanAPI.
+- Description: API REST para gerenciar um quadro Kanban.
+- Packaging: Jar.
+- Java: Versão 17 (ou a versão do JDK instalado).
+
+3. Adicionar Dependências:
+Clique em Add Dependencies e escolha:
+- Spring Web: para criar APIs REST.
+- Spring Data JPA: para persistência no banco de dados.
+- H2 Database: para usar o banco in-memory.
+
+4. Clique em Generate.
+- Isso irá gerar um arquivo .zip com o projeto configurado.
+__________________________________________________________________________________________________________________________________
+PASSO 2: IMPORTAR O PROJETO NO INTELLIJ COMMUNITY
+1. Extraia o arquivo .zip
+- Após o download, descompacte o arquivo para uma pasta no seu computador.
+
+2. Abra o IntelliJ IDEA Community:
+- Clique em File > Open.
+- Navegue até a pasta do projeto extraído e clique em OK.
+
+3. Configurar o Maven no IntelliJ:
+- O IntelliJ reconhecerá automaticamente o arquivo pom.xml e configurará o Maven.
+- Caso veja a opção Load Maven Changes no canto superior direito, clique nela para garantir que as dependências sejam baixadas.
+
+4. Configurar o JDK:
+- Vá para File > Project Structure > SDK e selecione o JDK que você instalou.
+
+5. Executar o Projeto:
+- Navegue até o arquivo KanbanApiApplication.java (localizado em src/main/java/com/example/kanbanapi).
+- Clique com o botão direito no método main e selecione Run para rodar o projeto.
+__________________________________________________________________________________________________________________________________
