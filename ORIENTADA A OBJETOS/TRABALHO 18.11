@@ -33,11 +33,20 @@ PASSO 2: IMPORTAR O PROJETO NO INTELLIJ COMMUNITY
 3. Configurar o Maven no IntelliJ:
 - O IntelliJ reconhecerá automaticamente o arquivo pom.xml e configurará o Maven.
 - Caso veja a opção Load Maven Changes no canto superior direito, clique nela para garantir que as dependências sejam baixadas.
+__________________________________________________________________________________________________________________________________
+COMO INSTALAR O JDK
 
 4. Configurar o JDK:
 - Vá para File > Project Structure > SDK e selecione o JDK que você instalou.
+COMO INSTALAR
 
+__________________________________________________________________________________________________________________________________
 5. Executar o Projeto:
 - Navegue até o arquivo KanbanApiApplication.java (localizado em src/main/java/com/example/kanbanapi).
 - Clique com o botão direito no método main e selecione Run para rodar o projeto.
 __________________________________________________________________________________________________________________________________
+PASSO 3: CONFIGURAR CONFIGURAÇÃO
+1. Acesse http://localhost:8080 no navegador para confirmar que a aplicação está rodando.
+2. Se configurou corretamente o H2 no próximo passo, poderá acessar o console em http://localhost:8080/h2-console.
+
+
