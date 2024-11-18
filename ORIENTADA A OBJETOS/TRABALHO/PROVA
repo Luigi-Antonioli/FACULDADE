@@ -1,13 +1,218 @@
-PEGUE TODAS ESSAS VARIAVEIS E FAÇA EM SEUS FORMATOS PARA EU COLOCAR O QUE CADA UMA DEVE APRESENTAR, IREI COLOCAR NO BODY DO POSTMAN
-SEGUINDO A LOGICA DA MINHA PROVA QUE FORNECI PRA VOCE
-    private Long id;
+********************************************************************************************
+com.example.registrador.controller.IncidenteController
 
+package com.example.registrador.controller;
+
+import com.example.registrador.model.Incidente;
+import com.example.registrador.model.NivelGravidade;
+import com.example.registrador.model.Status;
+import com.example.registrador.service.IncidenteService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/incidentes")
+public class IncidenteController {
+
+    private final IncidenteService service;
+
+    public IncidenteController(IncidenteService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public Incidente registrarIncidente(@RequestBody Incidente incidente) {
+        return service.registrarIncidente(incidente);
+    }
+
+    @GetMapping
+    public List<Incidente> consultarPorGravidadeEStatus(
+            @RequestParam(required = false) NivelGravidade gravidade,
+            @RequestParam(required = false) Status status) {
+        return service.consultarPorGravidadeEStatus(gravidade, status);
+    }
+
+    @PatchMapping("/{id}/status")
+    public Incidente alterarStatus(@PathVariable Long id, @RequestParam Status status) {
+        return service.alterarStatus(id, status);
+    }
+
+    @GetMapping("/totais-por-gravidade")
+    public List<Object[]> consultarTotalPorGravidade() {
+        return service.consultarTotalPorGravidade();
+    }
+}
+********************************************************************************************
+com.example.registrador.model.Incidente
+
+package com.example.registrador.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+public class Incidente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
     private NivelGravidade nivelGravidade;
-
     private LocalDate dataOcorrencia;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
-
     private String codigoSistema;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public NivelGravidade getNivelGravidade() {
+        return nivelGravidade;
+    }
+
+    public void setNivelGravidade(NivelGravidade nivelGravidade) {
+        this.nivelGravidade = nivelGravidade;
+    }
+
+    public LocalDate getDataOcorrencia() {
+        return dataOcorrencia;
+    }
+
+    public void setDataOcorrencia(LocalDate dataOcorrencia) {
+        this.dataOcorrencia = dataOcorrencia;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String getCodigoSistema() {
+        return codigoSistema;
+    }
+
+    public void setCodigoSistema(String codigoSistema) {
+        this.codigoSistema = codigoSistema;
+    }
+}
+********************************************************************************************
+com.example.registrador.model.NivelGravidade
+
+package com.example.registrador.model;
+
+public enum NivelGravidade {
+    BAIXA,
+    MEDIA,
+    CRITICA
+}
+********************************************************************************************
+com.example.registrador.model.Status
+
+package com.example.registrador.model;
+
+public enum Status {
+    ABERTO,
+    RESOLVIDO,
+    IGNORADO
+}
+********************************************************************************************
+com.example.registrador.repository.IncidenteRepository
+
+package com.example.registrador.repository;
+
+import com.example.registrador.model.Incidente;
+import com.example.registrador.model.NivelGravidade;
+import com.example.registrador.model.Status;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+
+public interface IncidenteRepository extends JpaRepository<Incidente, Long> {
+
+    List<Incidente> findByNivelGravidadeAndStatus(NivelGravidade nivelGravidade, Status status);
+
+    @Query("SELECT nivelGravidade, COUNT(*) FROM Incidente GROUP BY nivelGravidade")
+    List<Object[]> countByNivelGravidade();
+}
+********************************************************************************************
+com.example.registrador.service.IncidenteService
+
+package com.example.registrador.service;
+
+import com.example.registrador.model.Incidente;
+import com.example.registrador.model.NivelGravidade;
+import com.example.registrador.model.Status;
+import com.example.registrador.repository.IncidenteRepository;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Service
+public class IncidenteService {
+
+    private final IncidenteRepository repository;
+
+    public IncidenteService(IncidenteRepository repository) {
+        this.repository = repository;
+    }
+
+    public Incidente registrarIncidente(Incidente incidente) {
+        incidente.setDataOcorrencia(LocalDate.now());
+        incidente.setStatus(Status.ABERTO);
+        return repository.save(incidente);
+    }
+
+    public List<Incidente> consultarPorGravidadeEStatus(NivelGravidade gravidade, Status status) {
+        return repository.findByNivelGravidadeAndStatus(gravidade, status);
+    }
+
+    public Incidente alterarStatus(Long id, Status novoStatus) {
+        Incidente incidente = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Incidente não encontrado!"));
+        incidente.setStatus(novoStatus);
+        return repository.save(incidente);
+    }
+
+    public List<Object[]> consultarTotalPorGravidade() {
+        return repository.countByNivelGravidade();
+    }
+}
+********************************************************************************************
+com.example.registrador.RegistradorApplication
+
+package com.example.registrador;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RegistradorApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(RegistradorApplication.class, args);
+	}
+}
+
+
+
