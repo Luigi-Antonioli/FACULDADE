@@ -37,8 +37,8 @@ ________________________________________________________________________________
 COMO INSTALAR O JDK
 
 4. Configurar o JDK:
-- Vá para File > Project Structure > SDK e selecione o JDK que você instalou.
-COMO INSTALAR
+- Vá para File > Project Structure > SDKs > + > Download JDK > version: 17 > vendor: Eclipse Temurin 17.0.13 > DOWNLOAD
+
 
 __________________________________________________________________________________________________________________________________
 5. Executar o Projeto:
