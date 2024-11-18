@@ -1,0 +1,13 @@
+PEGUE TODAS ESSAS VARIAVEIS E FAÇA EM SEUS FORMATOS PARA EU COLOCAR O QUE CADA UMA DEVE APRESENTAR, IREI COLOCAR NO BODY DO POSTMAN
+SEGUINDO A LOGICA DA MINHA PROVA QUE FORNECI PRA VOCE
+    private Long id;
+
+    private String descricao;
+
+    private NivelGravidade nivelGravidade;
+
+    private LocalDate dataOcorrencia;
+
+    private Status status;
+
+    private String codigoSistema;
