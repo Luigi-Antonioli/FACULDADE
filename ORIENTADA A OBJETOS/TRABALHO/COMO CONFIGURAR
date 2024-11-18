@@ -160,7 +160,137 @@ public class Tarefa {
     }
 }
 
+- src/main/java/com.example.nomeDoKanban > botao direito > New > Package > digite: repository
+- crie uma java class INTERFACE com o nome TarefaRepository e 
+coloque este código:
+
+package com.example.kanban_api.repository;
+
+import com.example.kanban_api.model.Tarefa;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
+    // Métodos de pesquisa ou customizados podem ser adicionados aqui
+}
+
+- src/main/java/com.example.nomeDoKanban > botao direito > New > Package > digite: service
+- crie uma java class INTERFACE com o nome TarefaService e 
+coloque este código:
+
+package com.example.kanban_api.service;
+
+import com.example.kanban_api.model.Tarefa;
+import com.example.kanban_api.repository.TarefaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class TarefaService {
+
+    private final TarefaRepository tarefaRepository;
+
+    @Autowired
+    public TarefaService(TarefaRepository tarefaRepository) {
+        this.tarefaRepository = tarefaRepository;
+    }
+
+// criar uma nova tarefa
+    public Tarefa criarTarefa(Tarefa tarefa) {
+        return tarefaRepository.save(tarefa);
+    }
+
+// listar uma nova tarefa
+    public List<Tarefa> listarTarefas() {
+        return tarefaRepository.findAll();
+    }
+
+// obter tarefa por ID
+    public Optional<Tarefa> obterTarefaPorId(Long id) {
+        return tarefaRepository.findById(id);
+    }
+
+// atualizar tarefa
+    public Tarefa atualizarTarefa(Tarefa tarefa) {
+        return tarefaRepository.save(tarefa);
+    }
+
+// deletar tarefa
+    public void deletarTarefa(Long id) {
+        tarefaRepository.deleteById(id);
+    }
+}
+
+- src/main/java/com.example.nomeDoKanban > botao direito > New > Package > digite: controller
+- crie uma java class INTERFACE com o nome TarefaController e 
+coloque este código:
+
+package com.example.kanban_api.controller;
+
+import com.example.kanban_api.model.Tarefa;
+import com.example.kanban_api.service.TarefaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/tarefas")
+public class TarefaController {
+
+    private final TarefaService tarefaService;
+
+    @Autowired
+    public TarefaController(TarefaService tarefaService) {
+        this.tarefaService = tarefaService;
+    }
+
+// criar nova tarefa
+    @PostMapping
+    public ResponseEntity<Tarefa> criarTarefa(@RequestBody Tarefa tarefa) {
+        Tarefa novaTarefa = tarefaService.criarTarefa(tarefa);
+        return new ResponseEntity<>(novaTarefa, HttpStatus.CREATED);
+    }
+
+// listar todas as tarefas
+    @GetMapping
+    public List<Tarefa> listarTarefas() {
+        return tarefaService.listarTarefas();
+    }
+
+// obter tarefa por ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Tarefa> obterTarefaPorId(@PathVariable Long id) {
+        Optional<Tarefa> tarefa = tarefaService.obterTarefaPorId(id);
+        return tarefa.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+// atualizar tarefa
+    @PutMapping("/{id}")
+    public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable Long id, @RequestBody Tarefa tarefa) {
+        tarefa.setId(id);
+        Tarefa tarefaAtualizada = tarefaService.atualizarTarefa(tarefa);
+        return new ResponseEntity<>(tarefaAtualizada, HttpStatus.OK);
+    }
+
+// deletar tarefa
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarTarefa(@PathVariable Long id) {
+        tarefaService.deletarTarefa(id);
+        return ResponseEntity.noContent().build();
+    }
+}
 __________________________________________________________________________________________________________________________________
-PASSO 3: CONFIGURAR CONFIGURAÇÃO
+PASSO 3: ABRIR O POSTMAN ( DEIXEI O ARQUIVO DELE TAMBÉM ) 
+
+__________________________________________________________________________________________________________________________________
+PASSO 4: CONFIGURAR CONFIGURAÇÃO
 1. Acesse http://localhost:8080 no navegador para confirmar que a aplicação está rodando.
 2. Se configurou corretamente o H2 no próximo passo, poderá acessar o console em http://localhost:8080/h2-console.
