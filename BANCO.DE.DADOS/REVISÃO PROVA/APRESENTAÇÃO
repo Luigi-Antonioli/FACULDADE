@@ -14,28 +14,14 @@ geradas dinamicamente em que é feita uma referência a ela.
 São úteis para análises em grandes conjuntos de dados. 
 
     - AVG: calcula a MÉDIA dos valores.
-    Ex.: SELECT AVG(salario) FROM empregados;
-      - FUNÇÃO NVL: força as funções de grupo a incluírem valores nulos.
-      Ex: SELECT AVG(comission_pct), avg(NVL(comission_pct,0)) FROM hr.exployees
-    
+    - FUNÇÃO NVL: força as funções de grupo a incluírem valores nulos.
     - COUNT: conta a QUANTIDADE de registros.
-    Ex.: SELECT COUNT(*) FROM vendas;
-    
     - MAX: retorna o MAIOR valor.
-    Ex.: SELECT MAX(preco) FROM produtos;
-    
     - MIN: retorna o MENOR valor.
-    Ex.: SELECT MIN(idade) FROM clientes;
-    
     - STDDEV: calcula o DESVIO padrão, mostrando a dispersão dos dados.
-    Ex.: SELECT STDDEV(valor) FROM transacoes;
-    
     - SUM: SOMA os valores de uma coluna.
-    Ex.: SELECT SUM(lucro) FROM relatorio;
-    
     - VARIANCE: calcula a VARIÂNCIA, mostrando o quão espalhados estão os dados.
-    Ex.: SELECT VARIANCE(pontos) FROM desempenho;
-
+  
 - A coluna não calculada pela função de grupo é OPCIONAL, ao informá-la é obrigatório o uso do GROUP BY
 - A ordenação padrão é a CRESCENTE, para sobrepor essa ordenação, é utilizado o DESC na clausula ORDER BY
 
