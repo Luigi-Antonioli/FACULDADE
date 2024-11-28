@@ -41,8 +41,12 @@ from hr.employees
     
     - VARIANCE: calcula a VARIÂNCIA, mostrando o quão espalhados estão os dados.
     Ex.: SELECT VARIANCE(pontos) FROM desempenho;
+
+OBS: NÃO PODE SER USADA A CONDIÇÃO WHERE PARA FILTRAR CONDIÇÕES REFRENTE A FUNÇÕES DE GRUPO.
 ________________________________________________________________________________________________
-SLIDE 8 - 
+SLIDE 8 - SUBCONSULTA
+
+
 
 ________________________________________________________________________________________________
 SLIDE 9 - 
