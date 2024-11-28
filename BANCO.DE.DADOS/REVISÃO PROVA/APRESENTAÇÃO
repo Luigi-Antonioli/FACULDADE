@@ -8,7 +8,8 @@ geradas dinamicamente em que é feita uma referência a ela.
     - SEGURANÇA: permite OCULTAR colunas, já que sua criação é a partir de outra tabela.
     - SIMPLIFICAÇÃO DO CÓDIGO: a partir de uma consulta complexa, é possível CRIAR um view, deixando o código mais simples.
 
-- QUERY: ela determina se uma view pode vir uma ou mais tabelas ou até mesmo de outras views.
+- QUERY: ela determina se uma view pode vir uma ou mais tabelas ou até mesmo de outras views. Ela é basicamente uma pesquisa ou consulta 
+realizada em um banco de dados para obter dados específicos de uma ou mais tabelas (ou até mesmo de uma view, que é uma tabela virtual).
 
 - FUNÇÕES DE GRUPO/AGREGAÇÃO: PROCESSAM várias linhas e retornam um único valor resumido. 
 São úteis para análises em grandes conjuntos de dados. 
