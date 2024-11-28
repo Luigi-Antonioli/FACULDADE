@@ -1,6 +1,6 @@
 SLIDE 7 - VIEW E FUNÇÕES DE GRUPO/AGREGAÇÃO
 
-  - CRIANDO UMA VIEW:
+- CRIANDO UMA VIEW:
 
     CREATE VIEW funcionarios as 
 ( 
@@ -96,7 +96,40 @@ SELECT
     (SELECT salary FROM max_hire_salary) AS sal_ult;
 
 ________________________________________________________________________________________________
-SLIDE 9 - 
+SLIDE 9 - JOIN
+
+- INNER JOIN
+- Quais funcionários estão associados a um departamento?
+
+SELECT a.employee_id, a.first_name, b.department_name 
+FROM hr.employees a
+INNER JOIN hr.departments b
+ON a.department_id = b.department_id;
+
+- LEFT JOIN
+- Quais funcionários não possuem departamento associado?
+
+SELECT a.employee_id, a.first_name, b.department_name
+FROM hr.employees a
+LEFT JOIN hr.departments b
+ON a.department_id = b.department_id;
+
+- RIGHT JOIN
+- Existem departamentos que não possuem nenhum funcionário associado?
+
+SELECT b.department_id, b.department_name, a.first_name
+FROM hr.employees a
+RIGHT JOIN hr.departments b
+ON a.department_id = b.department_id;
+
+- OUTER JOIN
+- Existem funcionários sem departamento ou departamentos sem funcionários?
+
+SELECT a.employee_id, a.first_name, b.department_name
+FROM hr.employees a
+FULL OUTER JOIN hr.departments b
+ON a.department_id = b.department_id;
+
 
 ________________________________________________________________________________________________
 SLIDE 10 - 
