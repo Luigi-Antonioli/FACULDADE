@@ -1,3 +1,5 @@
+SLIDE 7 - VIEW E FUNÇÕES DE GRUPO
+
 - VIEW: pode ser definida como uma tabela virtual composto por linhas e colunas de dados vindo de tabelas relacionadas em uma query, 
 geradas dinamicamente em que é feita uma referência a ela.
   - FUNÇÃO DA VIEW: FILTRAR tabelas, servindo para agrupá-las, protegendo certas colunas e simplificando o código de programação.
@@ -42,6 +44,24 @@ São úteis para análises em grandes conjuntos de dados.
   - A condição WHERE NÃO pode ser usada para filtrar condições referente a funções de grupos, para isso é utilizada a cláusula HAVING
 
 - HAVING: é usada para filtrar resultados de grupos criados pelo GROUP BY, aplicando condições nas funções de agregação.
+_______________________________________________________________________________________________________________________________________________
+SLIDE 8 - SUBCONSULTAS E CTE PADRÃO E RECURSIVO
 
+- SUBCONSULTA (CONSULTA INTERNA): é executada antes da consulta principal, dessa forma o resultado é usado pela consulta principal.
+  - São úteis para selecionar linhas de uma tabela com uma condição que dependa dos dados na própria tabela.
+  - PODEM SER USADAS nas cláusulas WHERE, HAVING, FROM
+  - A SUBCONSULTA DEVE ESTAR ENTRE PARÊNTESES.
+  - NÃO SE DEVE USAR ORDER BY EM SUBCONSULTAS.
 
+- OPERADOR DE ÚNICA LINHA COM SUBCONSULTA DE ÚNICA LINHA
+- OPERADOR DE VÁRIAS LINHAS COM SUBCONSULTA DE VÁRIAS LINHAS
 
+- CTE: usada para SIMPLIFICAR a escrita de consultas complexas, ajuda a dividir a lógica em 
+partes menores tornando-as mais fáceis para o entendimento.
+  - Sâo definidos na frente da consulta, enquanto as subconsultas são definidas em linha.
+  - Os CTEs SEMPRE DEVEM SER NOMEADOS.
+- WITH: é usada para DEFINIR CONSULTAS RECURSIVAS(CTE). Essas consultas AJUDAM a consultar estruturas hierárquicas.
+_______________________________________________________________________________________________________________________________________________
+SLIDE 9 - JOIN
+
+- JOIN
