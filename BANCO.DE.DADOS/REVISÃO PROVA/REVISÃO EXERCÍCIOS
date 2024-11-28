@@ -78,7 +78,23 @@ WHERE manager_id = 100
 )
 and manager_id <> 100
 
-- CTE
+- CTE (SEMPRE DEVE TER O 'WITH', porque ele é o comando que inicia e define o escopo da CTE)
+- Qual a diferença de salário (com comissão) do primeiro e do último contratado? (subconsulta)
+
+WITH min_hire_salary AS (
+    SELECT salary 
+    FROM hr.employees 
+    WHERE hire_date = (SELECT MIN(hire_date) FROM hr.employees)
+),
+max_hire_salary AS (
+    SELECT salary 
+    FROM hr.employees 
+    WHERE hire_date = (SELECT MAX(hire_date) FROM hr.employees)
+)
+SELECT 
+    (SELECT salary FROM min_hire_salary) AS sal_prim, 
+    (SELECT salary FROM max_hire_salary) AS sal_ult;
+
 ________________________________________________________________________________________________
 SLIDE 9 - 
 
