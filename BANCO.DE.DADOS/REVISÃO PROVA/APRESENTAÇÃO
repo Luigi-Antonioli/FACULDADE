@@ -60,8 +60,23 @@ SLIDE 8 - SUBCONSULTAS E CTE PADRÃO E RECURSIVO
 partes menores tornando-as mais fáceis para o entendimento.
   - Sâo definidos na frente da consulta, enquanto as subconsultas são definidas em linha.
   - Os CTEs SEMPRE DEVEM SER NOMEADOS.
+
 - WITH: é usada para DEFINIR CONSULTAS RECURSIVAS(CTE). Essas consultas AJUDAM a consultar estruturas hierárquicas.
 _______________________________________________________________________________________________________________________________________________
 SLIDE 9 - JOIN
 
-- JOIN
+- JOIN: combina dados de duas ou mais tabelas com base em uma relação comum, geralmente uma chave. 
+Ele permite trabalhar com dados relacionados de diferentes tabelas.
+  - ON: Ela define a relação entre as tabelas que estão sendo unidas.
+    - INNER JOIN: apenas correspondências.
+    - LEFT JOIN: tudo da esquerda, mesmo sem correspondência.
+    - RIGHT JOIN: tudo da direita, mesmo sem correspondência.
+    - FULL OUTER JOIN: tudo de ambas as tabelas, correspondendo ou não.
+    - LEFT/RIGHT EXCLUDING JOIN: apenas linhas exclusivas de uma tabela.
+_______________________________________________________________________________________________________________________________________________
+SLIDE 10 - ESTRUTURAS CONDICIONAIS
+
+- CASE WHEN: pode ser usado para uma ou mais condições
+- CAST: é uma função complexa que transforma um ou mais valores de um tipo 
+de dados para outro.
+_______________________________________________________________________________________________________________________________________________
