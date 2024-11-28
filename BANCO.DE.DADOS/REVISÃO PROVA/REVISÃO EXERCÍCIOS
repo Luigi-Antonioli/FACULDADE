@@ -130,6 +130,43 @@ FROM hr.employees a
 FULL OUTER JOIN hr.departments b
 ON a.department_id = b.department_id;
 
+- LEFT EXCLUDING JOIN
+- Quais funcionários não estão associados a nenhum departamento?
+
+SELECT a.employee_id, a.first_name
+FROM hr.employees a
+LEFT JOIN hr.departments b
+ON a.department_id = b.department_id
+WHERE b.department_id IS NULL;
+
+- RIGHT EXCLUDING JOIN
+- Quais departamentos não possuem nenhum funcionário associado?
+
+SELECT b.department_id, b.department_name
+FROM hr.employees a
+RIGHT JOIN hr.departments b
+ON a.department_id = b.department_id
+WHERE a.employee_id IS NULL;
 
 ________________________________________________________________________________________________
-SLIDE 10 - 
+SLIDE 10 - ESTRUTURAS CONDICIONAIS E TIPOS DE DADOS
+
+- CASE WHEN
+- Como identificar os funcionários com salários acima de 5000 e rotulá-los como "Alta Renda", 
+enquanto os demais são rotulados como "Média Renda"?
+
+SELECT employee_id, first_name, salary, 
+       CASE 
+           WHEN salary > 5000 THEN 'Alta Renda'
+           ELSE 'Média Renda'
+       END AS faixa_salarial
+FROM hr.employees;
+
+- CASE CAST 
+- Como exibir os salários dos funcionários como texto em vez de números?
+
+SELECT employee_id, first_name, 
+       CAST(salary AS VARCHAR(10)) AS salario_texto
+FROM hr.employees;
+
+________________________________________________________________________________________________
