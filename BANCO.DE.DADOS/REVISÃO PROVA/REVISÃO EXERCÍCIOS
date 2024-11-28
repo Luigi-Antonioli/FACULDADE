@@ -44,10 +44,41 @@ from hr.employees
 
 OBS: NÃO PODE SER USADA A CONDIÇÃO WHERE PARA FILTRAR CONDIÇÕES REFRENTE A FUNÇÕES DE GRUPO.
 ________________________________________________________________________________________________
-SLIDE 8 - SUBCONSULTA
+SLIDE 8 - SUBCONSULTA e CTE
 
+- SUBCONSULTA DE ÚNICA LINHA:
+Quais são os dados do funcionário que tem maior comissão?
 
+SELECT * FROM hr.employees 
+WHERE comission_pct = 
+(
+SELECT MAX(comission_pct)
+FROM hr.employees
+)
 
+- SUBCONSULTA DE VÁRIAS LINHAS:
+Quais são os dados do funcionário que tem o mesmo salário que o cargo com final CLERK?
+
+SELECT * FROM hr.employees
+WHERE salary in 
+(
+SELECT salary FROM hr.employees
+WHERE job_id like '%CLERK'
+)
+
+- SUBCONSULTAS DE VÁRIAS COLUNAS:
+- Quais são os dados do funcionário que tem o mesmo salário e comissão da equipe do gestor 
+100, mas que pertence a outra gestão?
+
+SELECT * FROM hr.employees 
+WHERE (salary,comission_pct) in
+(
+SELECT salary, comission_pct FROM hr.employees
+WHERE manager_id = 100
+)
+and manager_id <> 100
+
+- CTE
 ________________________________________________________________________________________________
 SLIDE 9 - 
 
