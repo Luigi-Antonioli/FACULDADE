@@ -1,109 +1,245 @@
-1 - Imagine que você está trabalhando em uma empresa de tecnologia, responsável pela manutenção e otimização de servidores que hospedam diversos serviços 
-essenciais, como sites, bancos de dados e aplicativos corporativos. Esses servidores precisam gerenciar simultaneamente milhares de processos, desde 
-tarefas simples, como responder a uma solicitação de página web, até operações complexas, como o processamento de grandes volumes de dados.
-Para garantir que todos esses processos sejam executados de maneira eficiente e sem interrupções, é fundamental que você compreenda como o sistema 
-operacional gerencia cada processo.Explique detalhadamente os possíveis estados de um processo, o que representa cada estado e como ocorre a transição 
-de um estado para o outro.
+1) Imagine que você está trabalhando em uma empresa de tecnologia, responsável pela 
+manutenção e otimização de servidores que hospedam diversos serviços essenciais, como sites, 
+bancos de dados e aplicativos corporativos. Esses servidores precisam gerenciar 
+simultaneamente milhares de processos, desde tarefas simples, como responder a uma 
+solicitação de página web, até operações complexas, como o processamento de grandes volumes 
+de dados. Para garantir que todos esses processos sejam executados de maneira eficiente e sem 
+interrupções, é fundamental que você compreenda como o sistema operacional gerencia cada 
+processo. EXPLIQUE detalhadamente, abordando QUAIS os estados possíveis de um processo, 
+O QUE representa cada estado e COMO ocorre a transição de um estado para o outro?
 
-RESPOSTA 1 = 
-Os estados possíveis de um processo são: em execução, pronto e bloqueado.
- - O estado em execução indica que o processo está atualmente utilizando o processador.
- - O estado pronto indica que o processo está aguardando a sua vez de executar, ou seja, de usar
- o processador.
- - O estado bloqueado indica que o processo não pode ser executado pois está esperando alguma
- ação decorrente de entrada/saída
-Quatro transições são possíveis entre os estados:
- - Em execução para pronto: acontece quando um processo está executando e o sistema
- operacional interrompe a execução do processo para colocar outro processo em execução (o
- quantum do processo terminou)
- - Pronto para em execução: o sistema operacional selecionou um dos processos que estava
- aguardando para executar e usar o processador
- - Em execução para bloqueado: o processo que estava executando solicitou uma tarefa de
- entrada e saída, bloqueando a execução no processador pois quem resolve as operações de E/S
- não é o processador
- - Bloqueado para pronto: o processo que estava bloqueado finalizou a tarefa de E/S e agora pode
- aguardar sua vez de executar novamente
+RESPOSTA: os estados possíveis de um processo são: em execução, pronto e bloqueado. 
+O estado em execução indica que o processo está atualmente utilizando o processador. 
+O estado pronto indica que o processo está aguardando a sua vez de executar, ou seja, de usar 
+o processador. 
+O estado bloqueado indica que o processo não pode ser executado pois está esperando alguma 
+ação decorrente de entrada/saída
+Quatro transições são possíveis entre os estados
+Em execução para pronto: acontece quando um processo está executando e o sistema 
+operacional interrompe a execução do processo para colocar outro processo em execução (o 
+quantum do processo terminou)
+Pronto para em execução: o sistema operacional selecionou um dos processos que estava 
+aguardando para executar e usar o processador
+Em execução para bloqueado: o processo que estava executando solicitou uma tarefa de 
+entrada e saída, bloqueando a execução no processador pois quem resolve as operações de E/S 
+não é o processador
+Bloqueado para pronto: o processo que estava bloqueado finalizou a tarefa de E/S e agora pode 
+aguardar sua vez de executar novamente
+ARQUIVO: Tanenbaum - SO - Cap 02 - Processos e Threads - Parte 1 – SLIDE 8
 
+__________________________________________________________________________________________________________________________________________
+2) Considere o funcionamento de uma pizzaria que vende pizzas para entrega, na qual o garçom 
+anota o pedido do cliente, o cozinheiro prepara a pizza, o embalador embala a pizza para viagem 
+e o caixa recebe o valor do pedido do cliente. Cada um dos empregados: garçom, cozinheiro, 
+embalador e caixa, podem ser vistos como um processo sequencial de comunicação. QUAL forma 
+de comunicação entre processos eles usariam? JUSTIFIQUE e FAÇA uma analogia com o que 
+acontece em um sistema operacional 
 
-2 - Considere o funcionamento de uma pizzaria que vende pizzas para entrega, na qual o garcom anota o pedido do cliente, o cozinheiro prepara a pizza, 
-o embalador embala a pizza para viagem e o caixa recebe o valor do pedido do cliente. Cada um dos empregados: garçom, cozinheiro, embalador e caixa, 
-podem servistos como um processo sequencial de comunicação. QUAL forma de comunicação entre procèssoș eles usariam? 
-JUSTIFIQUE e FAÇA uma analogia com o que acontece em um sistema operacional.
-
-RESPOSTA 2 = 
-Duas formas de comunicação podem ser utilizadas: troca de mensagens e memória compartilhada. Na analogia, os processos (garçom, cozinheiro, embalador e caixa)
-podem trocar mensagens para gerenciar o funcionamento da pizzaria. Além disso os processos podem ter um local de memória compartilhado para trocar as mensagens, 
-algo como um quadro na qual as informações sobre pedidos, valores são anotados e visualizados pelos processos, funcionando como uma comunicação.
-Em um sistema operacional processos podem se comunicar trocando mensagens, uma vez que um processo não pode invadir o espaço da memória reservado para 
-outro processo. Essas trocas de mensagens são feitas por meio dos sockets, enviando e recebendo informações relevantes para os processos. 
-Além disso dois processos podem definir um trecho da memória compartilhado (gerenciado pelo SO), e ao acessar (ler/escrever) na memória compartilhada os 
-processos podem se comunicar, gerenciando ou não a exclusão mútua dos dados presentes na memória
-
-
-3 - Cinco tarefas em lotes, A a E, chegam em um centro de computacão quase ao mesmo tempo Elas têm tempos de execução estimados em 100, 60, 20, 40 e 80 
-unidades de tempo. Suas prioridades (externamente determinadas) são: 3, 5, 2, 1 e 4, respectivamente, sendo 5 a prioridade mais alta. 
-CALCULE o tempo de execução das tarefas e o tempo médio geral para os seguintes algoritmos: Escalonamento por Prioridades, Primeiro a chegar, 
-primeiro a ser servido (executado na ordem: A a E) e Tarefa mais curta primeiro. Ignore a sobrecarga de chaveamento de processos 
-OBS: Para os a|goritmos descritos acima, considere a execução de somente uma tarefa por vez, até que termine. Todas as tarefas são completamente limitadas pela CPU.
-
-
-4 - Cinco tarefas em lotes, A a E, chegam em um centro de computação quase ao mesmo tempo. Elas têm tempos de execução estimados em 18, 14, 12, 16 e 20 
-unidades de tempo. CALCULE o tempo de execução das tarefas e o tempo médio geral para o ALGORITMO CIRCULAR. 
-Considere que o tempo de chaveamento é de uma unidade OBS: Considere que o sistema é multiprogramado e que cada tarefa obtenha sua/ração justa da CPU.
+RESPOSTA: duas formas de comunicação podem ser utilizadas: troca de mensagens e 
+memória compartilhada. Na analogia, os processos (garçom, cozinheiro, embalador e caixa) 
+podem trocar mensagens para gerenciar o funcionamento da pizzaria. Além disso os processos 
+podem ter um local de memória compartilhado para trocar as mensagens, algo como um quadro 
+na qual as informações sobre pedidos, valores são anotados e visualizados pelos processos, 
+funcionando como uma comunicação. 
+Em um sistema operacional processos podem se comunicar trocando mensagens, uma vez que 
+um processo não pode invadir o espaço da memória reservado para outro processo. Essas trocas 
+de mensagens são feitas por meio dos sockets, enviando e recebendo informações relevantes 
+para os processos. Além disso dois processos podem definir um trecho da memória compartilhado 
+(gerenciado pelo SO), e ao acessar (ler/escrever) na memória compartilhada os processos podem 
+se comunicar, gerenciando ou não a exclusão mútua dos dados presentes na memória
 
 
-5 - Considere a seguinte representação abaixo para o Problema do produtor/consumidor na qual as inhas são indicadas por numeros, seguido de c para o consumidor
-e p para o produtor. Utilizando a numeração das linhas de ambos os processos, APRESENTE uma situação na qual estes processos entram em estado de dormência com 
-base no escalonamento do sistema operacional. APRESENTE ainda a mudança de valor da variável "ocupadas" à medida que as linhas de 
-produtor/consumidor são executadas OBS: Utilize como base a representação: 2c-3c-4c-5c- 6c - 2p - 3p - 4p que indica que as linhas 2, 3, 4, 5 e 6 do 
-consumidor foram executadas, na sequência houve o escalonamento para o produtor que executou as linhas 3 e 4
+__________________________________________________________________________________________________________________________________________
+3) Cinco tarefas em lotes, A a E, chegam em um centro de computação quase ao mesmo tempo. 
+Elas têm tempos de execução estimados em 100, 60, 20, 40 e 80 unidades de tempo. Suas 
+prioridades (externamente determinadas) são: 3, 5, 2, 1 e 4, respectivamente, sendo 5 a prioridade 
+mais alta. CALCULE o tempo de execução das tarefas e o tempo médio geral para os seguintes 
+algoritmos: Escalonamento por Prioridades, Primeiro a chegar, primeiro a ser servido (executado 
+na ordem: A a E) e Tarefa mais curta primeiro. Ignore a sobrecarga de chaveamento de processos
+OBS: Para os algoritmos descritos acima, considere a execução de somente uma tarefa por vez, 
+até que termine. Todas as tarefas são completamente limitadas pela CPU 
 
+Processos Tempo Prioridade    FIFO   /   +CURTO    / PRIORIDADE
+    A      100      3         A 100      C 20           B 60
+    B      60       5         B 160      D 60           E 140
+    C      20       2         C 180      B 120          A 240
+    D      40       1         D 220      E 200          C 260
+    E      80       4         E 300      A 300          D 300
+                         TMP.MED 192/ TMP.MED 140 / TMP.MED 200
 
-6 - O armazenamento de dados em um HD ou SSD deve ser feito de modo aficiente uma vez que estes recursas são lentos em relacão às memórias DRAM. 
-EXPLIQUE a diferença entre alocação contigua e alocacão por ista encadeada em termos do tempo de acesso à informação.
+__________________________________________________________________________________________________________________________________________
+4) Cinco tarefas em lotes, A a E, chegam em um centro de computação quase ao mesmo tempo. 
+Elas têm tempos de execução estimados em 18, 14, 12, 16 e 20 unidades de tempo. CALCULE
+o tempo de execução das tarefas e o tempo médio geral para o ALGORITMO CIRCULAR. 
+Considere que o tempo de chaveamento é de uma unidade
+OBS: Considere que o sistema é multiprogramado e que cada tarefa obtenha sua fração justa da 
+CPU.
 
+A   T   B   T   C   T   D   T   E   T
+18  1   14  1   12  1   16  1   20  1
+17  1   13  1   11  1   15  1   19  1
+16  1   12  1   10  1   14  1   18  1
+15  1   11  1   9   1   13  1   17  1
+14  1   10  1   8   1   12  1   16  1
+13  1   9   1   7   1   11  1   15  1
+12  1   8   1   6   1   10  1   14  1
+11  1   7   1   5   1   9   1   13  1
+10  1   6   1   4   1   8   1   12  1
+9   1   5   1   3   1   7   1   11  1
+8   1   4   1   2   1   6   1   10  1
+7   1   3   1   1   1   5   1   9   1
+6   1   2   1   0   1   4   1   8   1   C = 115
+5   1   1   1           3   1   7   1
+4   1   0   1           2   1   6   1   B = 131
+3   1                   1   1   5   1
+2   1                   0   1   4   1   D = 145
+1   1                           3   1
+0   1                           2   1   A = 153
+                                1   1
+                                0   1   E = 157
 
-7 - Considere os seguintes recursos existentes em um sistema como E = (4 2 3 1) e as recursos atualmente disponíveis como A = (2 1 0 0) 
-Considera ainda que o sistema possui três processos. P1, P2 e P3 e a alocação atual é definida pela matiz C e a matriz de requisições dos processos 
-é definida pela matriz R abaixo:
+TEMPO MÉDIO
+140,2
 
-ANALISE O CENÁRIO DESCRITO DOS PROCESSOS E RECURSOS e APRESENTE O CENÁRIO DO SISTEMA (deadlock entre processos e quais, ou atendimento das requisições 
-na ordem X, Y e Z)
+__________________________________________________________________________________________________________________________________________
+5) Considere a seguinte representação abaixo para o Problema do produtor/consumidor na qual 
+as linhas são indicadas por números, seguido de c para o consumidor e p para o produtor. 
+Utilizando a numeração das linhas de ambos os processos, APRESENTE uma situação na qual 
+estes processos entram em estado de dormência com base no escalonamento do sistema 
+operacional. APRESENTE ainda a mudança do valor da variável “ocupadas” à medida que as 
+linhas de produtor/consumidor são executadas
+OBS: Utilize como base a representação: 2c – 3c – 4c – 5c – 6c – 2p – 3p – 4p que indica que as 
+linhas 2, 3, 4, 5 e 6 do consumidor foram executadas, na sequência houve o escalonamento para 
+o produtor que executou as linhas 3 e 4
+n é o tamanho máximo do buffer = 10
+ocupadas indica a quantidade de posições ocupadas do buffer
 
-QUESTÕES DE ASSINALAR
+CONSUMIDOR
+1c - while (TRUE) {
+2c - if (ocupadas ==0)
+3c - dorme
+4c - remove_item_MC
+5c - ocupadas--
+6c - if (ocupadas == (n - 1))
+7c - wakeup(produtor)
+8c - }
+PRODUTOR
+1p - while (TRUE) {
+2p - produz_item
+3p - if (ocupadas = n)
+4p - dorme 
+5p - insere_item_MC
+6p - ocupadas++
+7p - if (ocupadas == 1)
+8p - wakeup(consumidor)
+9p - }
+RESPOSTA: Com a variável ocupadas = 0, ao executar a linha 2c o consumidor verifica se 
+ocupadas é igual a zero, como o teste é verdadeiro, o processo executará a linha 3c, no entanto, 
+antes de ir dormir, o processo é escalonado e começa a execução do produtor
+O produtor executa as linhas 2p a 7p, sendo que a linha 8p é executada, no entanto o consumidor 
+não está dormindo ainda, então o sinal de acordar o consumidor é perdido
+Quando o sistema operacional executa novamente o consumidor, ele irá dormir, não sendo mais 
+selecionado para ser executado pelo sistema operacional
+O produtor irá executar as linhas 2p a 8p, sendo que a cada vez que executar a variável ocupadas 
+é incrementada em uma unidade
+Quando ocupadas == n o produtor irá dormir, e ambos os processos, produtor e consumidor 
+estarão dormindo
+Sequencia
+2c – 2p a 7p – 3c – 2p a 7p (em repetição) incrementando ocupadas
 
-8 - Uma das principais tarefas de um sistema operacional é o gerenciamento dos processos. Sobre o gerenciamento da exclusão mútua entre processos, 
+__________________________________________________________________________________________________________________________________________
+6) O armazenamento de dados em um HD ou SSD deve ser feito de modo eficiente uma vez que 
+estes recursos são lentos em relação às memórias DRAM. EXPLIQUE a diferença entre alocação 
+contígua e alocação por lista encadeada em termos do tempo de acesso à informação 
+RESPOSTA: 
+- Alocação contígua: aloca espaços no dispositivo (HD ou SSD) de forma sequencial, ou seja, 
+todos os blocos/setores do disco precisam ser sequenciais para armazenar uma informação.
+Já a alocação por lista encadeada salva as informações sobre o local de cada um dos blocos 
+no cabeçalho do arquivo, sendo necessário ler cada um dos blocos, descobrir onde está o próximo 
+e depois solicitar um novo acesso ao próximo bloco
+- A alocação contígua gera fragmentação interna e externa, já a alocação por lista encadeada gera 
+somente fragmentação interna
+Em termos de tempo de acesso, a alocação contígua gera um único acesso a uma posição 
+sequencial, enquanto que a alocação por lista encadeada gera um acesso, descobre onde é o 
+próximo, gerando novos e assim sucessivamente, sendo assim mais lenta do que a contígua
+
+__________________________________________________________________________________________________________________________________________
+7) Considere os seguintes recursos existentes em um sistema como E = (4 2 3 1) e os recursos 
+atualmente disponíveis como A = (2 1 0 0). Considere ainda que o sistema possui três processos, 
+P1, P2 e P3 e a alocação atual é definida pela matriz C e a matriz de requisições dos processos 
+é definida pela matriz R abaixo 
+𝐶 = ( 0 0 1 0 )
+    ( 2 0 0 1 )
+    ( 0 1 2 0 ) 
+𝑅 = ( 2 0 0 1 )
+    ( 1 0 1 0 )
+    ( 2 1 0 1 )
+ANALISE o cenário descrito dos processos e recursos e APRESENTE o cenário do sistema 
+(deadlock entre processos e quais, ou atendimento das requisições na ordem X, Y, Z)
+EXERCÍCIO RESOLVIDO EM SALA – SOMENTE VALORES DIFERENTES
+E = R S T U
+    4 2 3 1
+A = R S T U
+    2 1 0 0
+
+C = 0 0 1 0
+    2 0 0 1
+    0 1 2 0
+
+R = 2 0 0 1
+    1 0 1 0
+    2 1 0 1
+P1 NÃO PODE SER EXECUTADO
+P2 NÃO PODE SER EXECUTADO
+P3 NÃO PODE SER EXECUTADO
+DEADLOCK
+
+__________________________________________________________________________________________________________________________________________
+8) Uma das principais tarefas de um sistema operacional é o gerenciamento dos processos. Sobre 
+o gerenciamento da exclusão mútua entre processos, ANALISE as afirmações abaixo e 
+ASSINALE a alternativa CORRETA
+a) O uso do chaveamento obrigatório impede que um processo acesse o recurso 
+compartilhado, mesmo que ele não esteja sendo utilizado - CORRETA
+b) O uso da instrução TSL e do XCHG são exclusivos de sistemas operacionais de tempo 
+real
+c) A solução de Peterson utiliza-se dos procedimentos de “entrar na região” e “sair da 
+região” visando controlar o acesso ao recurso compartilhado por meio de operações nos 
+registradores
+d) Desabilitar interrupções significa que o processo não vai estar no estado de bloqueado
+e) Variáveis do tipo trava podem causar problemas no processo se ele estiver no estado 
+de bloqueado
+
+__________________________________________________________________________________________________________________________________________
+9) Um sistema operacional deve garantir a exclusividade no acesso a determinadas regiões 
+compartilhadas da memória, possibilitando somente um processo por vez acessando a região. 
+Com relação as técnicas utilizadas pelos sistemas operacionais para obtenção de exclusão mútua, 
 ANALISE as afirmações abaixo e ASSINALE a alternativa CORRETA
+a) As técnicas de TSL (Test and Set Lock) e XCHG (Exchange) são implementadas em 
+mais baixo nível, no nível de registradores - CORRETA
+b) Quando se utiliza da técnica de desabilitar interrupção dois processos podem 
+compartilhar o acesso a memória compartilhada sem erros
+c) Ao utilizar a técnica de chaveamento obrigatório nenhuma das quatro condições 
+necessárias para evitar condições de corrida são violadas
+d) A técnica chamada de Solução de Peterson utiliza-se de semáforos para contar o 
+número de sinais de acordar (wakeup) e sinais de dormir (sleep)
+e) Ao utilizar a técnica de variáveis do tipo trava, com qualquer algoritmo de 
+escalonamento dos processos, não serão apresentados problemas no acesso a 
+memória compartilhada
 
-a) O uso do chaveamento obrigatório impede que um processo acesse o recurso compartilhado, mesmo que ele não esteja sendo utilizado
-b) O uso da instrução TSL e do XCHG são exclusivos de sistemas operacionais de tempo real
-c) A solução de Peterson utiliza-se dos procedimentos de "entrar na região" e "sair a região" visando controlar o acesso ao recurso 
-compartilhado por meio de operações nos registradores 
-d) Desabilitar interrupções significa que o processo não vai estar no estado de bloqueado 
-e) Variáveis do tipo trava podem causar problemas no processo se ele estiver no estado de bloqueado.
-
-
-9 - Um sistema operacional deve_ garantir a exclusividade no acesso a determinadas regioes compartilhadas da memória, possibilitando 
-somente um processo por vez acessando a região, Com relação as técnicas utilizadas pelos sistemas operacionais para obtencão de exclusão 
-mútua ANALISE as afirmações abaixo e ASSINALE a alternativa correta.
-
-ALTERNATIVA CORRETA A) As técnicas de TSL (Test and Set Lock) e XCHG (Exchange) são implementadas em mais baixo nível, no nível de registradores 
-b) Quando se utiliza da técnica de desabilitar interrupção dois processos podem compartilhar o acesso a memória compartilhada sem erros 
-c) Ao utilizar a técnica de chaveamento obrigatório nenhuma das quatro condições necessárias para evitar condições de corrida são violadas 
-d) A técnica chamada de Solução de Peterson utiliza-se de semáforos para contar o número de sinais de acordar (wakeup) e sinais de dormir (sleep) 
-e) Ao utilizar a técnica de variáveis do tipo trava, com qualquer algoritma de escalonamento dos processos, não serão apresentados problemas no 
-acesso memória compartilhada.
-
-
-10 - Além do gerenciamento da memória de um computador, o sistema operacional é responsável por gerenciar os processos e a execução dos processos. 
-Sobre os algoritmos de escalonamento e as politicas de escalonamento do sistema operacional, ANALISE as afirmações abaixo e ASSINALE a alternativa 
-que apresenta uma afirmação correta.
- 
-a) Um algoritmo não preemptivo pode retirar um_processo do estado de pronto e passar x para o estado de em execução.
-b) Um algoritmo não preemptivo seleciona um processo qualquer da lista de processos bloqueados, e então executa esse processo até que ele esteja pronto 
-c) Um algoritmo preemptivo faz com que um processo sempre seja executado do início até o fim 
-d) Algoritmos preemptivos normalmente são executados em sistemas interativos, uma vez que a quantidade de processos é pequena a interação é 
-deixada de lado em relação à execução dos processos 
-e) Em sistemas em lote, a ideia é utilizar algoritmos que deixem o processo executar durante um longo 
-tempo, uma vez que o usuário está interagindo com vários processos ao mesmo tempo.
-
+__________________________________________________________________________________________________________________________________________
+10) Além do gerenciamento da memória de um computador, o sistema operacional é responsável 
+por gerenciar os processos e a execução dos processos. Sobre os algoritmos de escalonamento 
+e as políticas de escalonamento do sistema operacional, ANALISE as afirmações abaixo e 
+ASSINALE a alternativa que apresenta uma afirmação correta 
+a) Um algoritmo não preemptivo pode retirar um processo do estado de pronto e passar 
+para o estado de em execução - CORRETA
+b) Um algoritmo não preemptivo seleciona um processo qualquer da lista de processos 
+bloqueados, e então executa esse processo até que ele esteja pronto
+c) Um algoritmo preemptivo faz com que um processo sempre seja executado do início até 
+o fim
+d) Algoritmos preemptivos normalmente são executados em sistemas interativos, uma vez 
+que a quantidade de processos é pequena a interação é deixada de lado em relação à 
+execução dos processos
+e) Em sistemas em lote, a ideia é utilizar algoritmos que deixem o processo executar 
+durante um longo tempo, uma vez que o usuário está interagindo com vários processos 
+ao mesmo tempo
