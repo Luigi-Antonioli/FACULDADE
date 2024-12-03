@@ -1,1 +1,81 @@
+1 - Imagine que você está trabalhando em uma empresa de tecnologia, responsável pela maņutenção e otimização de servidores que hospedam diversos 
+serviços essenciais, como sites, bancos de dados aplicativos corporativos. Esses servidores precisam gerenciar simultaneamente milhares de processos, 
+desde tarefas simples, como responder a uma solicitação de página web, até operações complexas, como o processamento de grandes volumes de dados.
+Para garantir que todos esses processos sejam executados de maneira eficiente e sem interrupções, é fundamental que você compreenda como o sistema 
+operacional gerencia cada processo. EXPLIQUE detalhadamente, abordando QUAIS os estados possíveis de um processo, O QUE representa cada estado e 
+COMO ocorre a transição de um estado para o outro? 
+
+
+2 - Considere o funcionamento de uma pizzaria que vende pizzas para entrega, na qual o garcom anota o pedido do cliente, o cozinheiro prepara a pizza, 
+o embalador embala a pizza para viagem e o caixa recebe o valor do pedido do cliente. Cada um dos empregados: garçom, cozinheiro, embalador e caixa, 
+podem servistos como um processo sequencial de comunicação. QUAL forma de comunicação entre procèssoș eles usariam? 
+JUSTIFIQUE e FAÇA uma analogia com o que acontece em um sistema operacional.
+
+
+3 - Cinco tarefas em lotes, A a E, chegam em um centro de computacão quase ao mesmo tempo Elas têm tempos de execução estimados em 100, 60, 20, 40 e 80 
+unidades de tempo. Suas prioridades (externamente determinadas) são: 3, 5, 2, 1 e 4, respectivamente, sendo 5 a prioridade mais alta. 
+CALCULE o tempo de execução das tarefas e o tempo médio geral para os seguintes algoritmos: Escalonamento por Prioridades, Primeiro a chegar, 
+primeiro a ser servido (executado na ordem: A a E) e Tarefa mais curta primeiro. Ignore a sobrecarga de chaveamento de processos 
+OBS: Para os a|goritmos descritos acima, considere a execução de somente uma tarefa por vez, até que termine. Todas as tarefas são completamente limitadas pela CPU.
+
+
+4 - Cinco tarefas em lotes, A a E, chegam em um centro de computação quase ao mesmo tempo. Elas têm tempos de execução estimados em 18, 14, 12, 16 e 20 
+unidades de tempo. CALCULE o tempo de execução das tarefas e o tempo médio geral para o ALGORITMO CIRCULAR. 
+Considere que o tempo de chaveamento é de uma unidade OBS: Considere que o sistema é multiprogramado e que cada tarefa obtenha sua/ração justa da CPU.
+
+
+5 - Considere a seguinte representação abaixo para o Problema do produtor/consumidor na qual as inhas são indicadas por numeros, seguido de c para o consumidor
+e p para o produtor. Utilizando a numeração das linhas de ambos os processos, APRESENTE uma situação na qual estes processos entram em estado de dormência com 
+base no escalonamento do sistema operacional. APRESENTE ainda a mudança de valor da variável "ocupadas" à medida que as linhas de 
+produtor/consumidor são executadas OBS: Utilize como base a representação: 2c-3c-4c-5c- 6c - 2p - 3p - 4p que indica que as linhas 2, 3, 4, 5 e 6 do 
+consumidor foram executadas, na sequência houve o escalonamento para o produtor que executou as linhas 3 e 4
+
+
+6 - O armazenamento de dados em um HD ou SSD deve ser feito de modo aficiente uma vez que estes recursas são lentos em relacão às memórias DRAM. 
+EXPLIQUE a diferença entre alocação contigua e alocacão por ista encadeada em termos do tempo de acesso à informação.
+
+
+7 - Considere os seguintes recursos existentes em um sistema como E = (4 2 3 1) e as recursos atualmente disponíveis como A = (2 1 0 0) 
+Considera ainda que o sistema possui três processos. P1, P2 e P3 e a alocação atual é definida pela matiz C e a matriz de requisições dos processos 
+é definida pela matriz R abaixo:
+
+ANALISE O CENÁRIO DESCRITO DOS PROCESSOS E RECURSOS e APRESENTE O CENÁRIO DO SISTEMA (deadlock entre processos e quais, ou atendimento das requisições 
+na ordem X, Y e Z)
+
+QUESTÕES DE ASSINALAR
+
+8 - Uma das principais tarefas de um sistema operacional é o gerenciamento dos processos. Sobre o gerenciamento da exclusão mútua entre processos, 
+ANALISE as afirmações abaixo e ASSINALE a alternativa CORRETA
+
+a) O uso do chaveamento obrigatório impede que um processo acesse o recurso compartilhado, mesmo que ele não esteja sendo utilizado
+b) O uso da instrução TSL e do XCHG são exclusivos de sistemas operacionais de tempo real
+c) A solução de Peterson utiliza-se dos procedimentos de "entrar na região" e "sair a região" visando controlar o acesso ao recurso 
+compartilhado por meio de operações nos registradores 
+d) Desabilitar interrupções significa que o processo não vai estar no estado de bloqueado 
+e) Variáveis do tipo trava podem causar problemas no processo se ele estiver no estado de bloqueado.
+
+
+9 - Um sistema operacional deve_ garantir a exclusividade no acesso a determinadas regioes compartilhadas da memória, possibilitando 
+somente um processo por vez acessando a região, Com relação as técnicas utilizadas pelos sistemas operacionais para obtencão de exclusão 
+mútua ANALISE as afirmações abaixo e ASSINALE a alternativa correta.
+
+ALTERNATIVA CORRETA A) As técnicas de TSL (Test and Set Lock) e XCHG (Exchange) são implementadas em mais baixo nível, no nível de registradores 
+b) Quando se utiliza da técnica de desabilitar interrupção dois processos podem compartilhar o acesso a memória compartilhada sem erros 
+c) Ao utilizar a técnica de chaveamento obrigatório nenhuma das quatro condições necessárias para evitar condições de corrida são violadas 
+d) A técnica chamada de Solução de Peterson utiliza-se de semáforos para contar o número de sinais de acordar (wakeup) e sinais de dormir (sleep) 
+e) Ao utilizar a técnica de variáveis do tipo trava, com qualquer algoritma de escalonamento dos processos, não serão apresentados problemas no 
+acesso memória compartilhada.
+
+
+10 - Além do gerenciamento da memória de um computador, o sistema operacional é responsável por gerenciar os processos e a execução dos processos. 
+Sobre os algoritmos de escalonamento e as politicas de escalonamento do sistema operacional, ANALISE as afirmações abaixo e ASSINALE a alternativa 
+que apresenta uma afirmação correta.
+ 
+a) Um algoritmo não preemptivo pode retirar um_processo do estado de pronto e passar x para o estado de em execução.
+b) Um algoritmo não preemptivo seleciona um processo qualquer da lista de processos bloqueados, e então executa esse processo até que ele esteja pronto 
+c) Um algoritmo preemptivo faz com que um processo sempre seja executado do início até o fim 
+d) Algoritmos preemptivos normalmente são executados em sistemas interativos, uma vez que a quantidade de processos é pequena a interação é 
+deixada de lado em relação à execução dos processos 
+e) Em sistemas em lote, a ideia é utilizar algoritmos que deixem o processo executar durante um longo 
+tempo, uma vez que o usuário está interagindo com vários processos ao mesmo tempo.
 
