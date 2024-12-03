@@ -1,15 +1,43 @@
-1 - Imagine que você está trabalhando em uma empresa de tecnologia, responsável pela maņutenção e otimização de servidores que hospedam diversos 
-serviços essenciais, como sites, bancos de dados aplicativos corporativos. Esses servidores precisam gerenciar simultaneamente milhares de processos, 
-desde tarefas simples, como responder a uma solicitação de página web, até operações complexas, como o processamento de grandes volumes de dados.
+1 - Imagine que você está trabalhando em uma empresa de tecnologia, responsável pela manutenção e otimização de servidores que hospedam diversos serviços 
+essenciais, como sites, bancos de dados e aplicativos corporativos. Esses servidores precisam gerenciar simultaneamente milhares de processos, desde 
+tarefas simples, como responder a uma solicitação de página web, até operações complexas, como o processamento de grandes volumes de dados.
 Para garantir que todos esses processos sejam executados de maneira eficiente e sem interrupções, é fundamental que você compreenda como o sistema 
-operacional gerencia cada processo. EXPLIQUE detalhadamente, abordando QUAIS os estados possíveis de um processo, O QUE representa cada estado e 
-COMO ocorre a transição de um estado para o outro? 
+operacional gerencia cada processo.Explique detalhadamente os possíveis estados de um processo, o que representa cada estado e como ocorre a transição 
+de um estado para o outro.
+
+RESPOSTA 1 = 
+Os estados possíveis de um processo são: em execução, pronto e bloqueado.
+ - O estado em execução indica que o processo está atualmente utilizando o processador.
+ - O estado pronto indica que o processo está aguardando a sua vez de executar, ou seja, de usar
+ o processador.
+ - O estado bloqueado indica que o processo não pode ser executado pois está esperando alguma
+ ação decorrente de entrada/saída
+Quatro transições são possíveis entre os estados:
+ - Em execução para pronto: acontece quando um processo está executando e o sistema
+ operacional interrompe a execução do processo para colocar outro processo em execução (o
+ quantum do processo terminou)
+ - Pronto para em execução: o sistema operacional selecionou um dos processos que estava
+ aguardando para executar e usar o processador
+ - Em execução para bloqueado: o processo que estava executando solicitou uma tarefa de
+ entrada e saída, bloqueando a execução no processador pois quem resolve as operações de E/S
+ não é o processador
+ - Bloqueado para pronto: o processo que estava bloqueado finalizou a tarefa de E/S e agora pode
+ aguardar sua vez de executar novamente
 
 
 2 - Considere o funcionamento de uma pizzaria que vende pizzas para entrega, na qual o garcom anota o pedido do cliente, o cozinheiro prepara a pizza, 
 o embalador embala a pizza para viagem e o caixa recebe o valor do pedido do cliente. Cada um dos empregados: garçom, cozinheiro, embalador e caixa, 
 podem servistos como um processo sequencial de comunicação. QUAL forma de comunicação entre procèssoș eles usariam? 
 JUSTIFIQUE e FAÇA uma analogia com o que acontece em um sistema operacional.
+
+RESPOSTA 2 = 
+Duas formas de comunicação podem ser utilizadas: troca de mensagens e memória compartilhada. Na analogia, os processos (garçom, cozinheiro, embalador e caixa)
+podem trocar mensagens para gerenciar o funcionamento da pizzaria. Além disso os processos podem ter um local de memória compartilhado para trocar as mensagens, 
+algo como um quadro na qual as informações sobre pedidos, valores são anotados e visualizados pelos processos, funcionando como uma comunicação.
+Em um sistema operacional processos podem se comunicar trocando mensagens, uma vez que um processo não pode invadir o espaço da memória reservado para 
+outro processo. Essas trocas de mensagens são feitas por meio dos sockets, enviando e recebendo informações relevantes para os processos. 
+Além disso dois processos podem definir um trecho da memória compartilhado (gerenciado pelo SO), e ao acessar (ler/escrever) na memória compartilhada os 
+processos podem se comunicar, gerenciando ou não a exclusão mútua dos dados presentes na memória
 
 
 3 - Cinco tarefas em lotes, A a E, chegam em um centro de computacão quase ao mesmo tempo Elas têm tempos de execução estimados em 100, 60, 20, 40 e 80 
