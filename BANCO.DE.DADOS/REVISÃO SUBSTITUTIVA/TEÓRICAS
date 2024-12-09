@@ -1,0 +1,85 @@
+Funções de Agregação
+O que a função COUNT faz em uma consulta SQL?
+R: Conta o número de registros em uma tabela ou resultado, podendo ser usado com uma coluna ou COUNT(*).
+
+Explique a diferença entre as funções MAX e MIN.
+R: MAX retorna o maior valor de uma coluna, enquanto MIN retorna o menor valor.
+
+Como a função AVG é usada? Dê um exemplo teórico.
+R: Calcula a média dos valores em uma coluna numérica. Exemplo: SELECT AVG(preco) FROM produtos;
+
+Qual é o propósito da função SUM em uma consulta SQL?
+R: Soma os valores de uma coluna numérica.
+
+O que acontece se usarmos COUNT(*) em uma tabela sem registros?
+R: O resultado será 0, pois não há registros para contar.
+_____________________________________________________________________________________________________________________________________________
+Views
+O que é uma View no SQL?
+R: Uma View é uma consulta armazenada que se comporta como uma tabela virtual.
+
+Quais são as vantagens de usar Views em um banco de dados?
+R: Simplificam consultas complexas, aumentam a segurança restringindo acesso a dados sensíveis, e permitem reutilização de lógica.
+
+Uma View pode ser atualizada? Em quais casos isso é possível?
+R: Sim, se a View for baseada em uma única tabela sem agregações ou funções.
+
+Qual é a diferença entre uma tabela e uma View?
+R: Uma tabela armazena dados fisicamente, enquanto uma View é apenas uma representação virtual de dados.
+
+Como criar uma View para mostrar apenas os funcionários de um departamento específico?
+R: CREATE VIEW vw_departamento AS SELECT * FROM funcionarios WHERE departamento_id = 1;
+
+_____________________________________________________________________________________________________________________________________________
+Joins
+Explique o que é um INNER JOIN.
+R: Retorna registros que têm correspondência em ambas as tabelas envolvidas no JOIN.
+
+Qual é a diferença entre um LEFT JOIN e um RIGHT JOIN?
+R: LEFT JOIN retorna todos os registros da tabela à esquerda e correspondências da direita; RIGHT JOIN faz o oposto.
+
+Em que situação um FULL JOIN é mais útil do que outros tipos de JOIN?
+R: Quando você precisa combinar todos os registros das duas tabelas, mesmo que não haja correspondência.
+
+O que acontece se você tentar fazer um JOIN entre tabelas sem uma condição válida no ON?
+R: Será gerado um produto cartesiano, combinando todos os registros das tabelas (resultado geralmente indesejado).
+
+Como você descreveria a cláusula ON em um JOIN?
+R: Define a condição de correspondência entre os registros das tabelas envolvidas no JOIN.
+
+_____________________________________________________________________________________________________________________________________________
+Subconsultas
+O que é uma subconsulta no SQL?
+R: É uma consulta dentro de outra consulta usada para retornar dados que serão utilizados pela consulta principal.
+
+Explique a diferença entre uma subconsulta no SELECT e uma subconsulta no WHERE.
+R: No SELECT, a subconsulta retorna valores para exibição; no WHERE, é usada para filtrar resultados.
+
+Uma subconsulta sempre retorna apenas um valor? Por quê?
+R: Não. Pode retornar múltiplos valores, dependendo do contexto (ex.: uma lista para cláusulas IN).
+
+Dê um exemplo teórico de quando você usaria uma subconsulta no SQL.
+R: Para encontrar produtos mais caros que o preço médio:
+SELECT nome_produto FROM produtos WHERE preco > (SELECT AVG(preco) FROM produtos);
+
+Subconsultas podem ser usadas dentro de uma cláusula JOIN? Explique.
+R: Sim, podem ser usadas para definir uma das tabelas ou os critérios de correspondência do JOIN.
+
+_____________________________________________________________________________________________________________________________________________
+Tipos de Dados
+Qual é a diferença entre os tipos de dados CHAR e VARCHAR?
+R: CHAR tem comprimento fixo, enquanto VARCHAR tem comprimento variável.
+
+Em que casos você usaria o tipo de dado DATE?
+R: Para armazenar apenas a data (sem horário) em formatos padrão.
+
+O que é um tipo de dado NUMERIC ou DECIMAL?
+R: São tipos para armazenar números com precisão fixa, como valores monetários.
+
+Qual é a principal limitação de usar TEXT como tipo de dado em uma tabela?
+R: Geralmente não pode ser indexado de forma eficiente, impactando a performance.
+
+Como os tipos DATETIME e TIMESTAMP diferem entre si?
+R: Ambos armazenam data e hora, mas TIMESTAMP pode ser ajustado automaticamente para fuso horário.
+
+_____________________________________________________________________________________________________________________________________________
