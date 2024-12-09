@@ -1,6 +1,6 @@
 QUESTÕES NÍVEL FÁCIL:
 
--- Questões sobre Funções de Agregação
+-- Questões sobre Funções de Agregação:
 - Função COUNT: Suponha que você tenha uma tabela chamada clientes com as colunas id_cliente e nome_cliente. 
 Crie uma consulta que retorne o número total de clientes cadastrados.
 
@@ -18,9 +18,8 @@ Crie uma consulta para calcular o valor total de todos os pedidos (quantidade * 
 SELECT SUM(quantidade * preco_unitario) AS valor_total_pedidos
 FROM pedidos;
 __________________________________________________________________________________________________________________________________________________________________
--- Questões sobre View
+-- Questões sobre View:
 - Criando uma View: Imagine que você tenha uma tabela funcionarios com as colunas id_funcionario, nome, salario, departamento_id, e data_admissao. 
-Crie uma view chamada vw_funcionarios_com_salario que mostre os nomes e salários dos funcionários.
 
 CREATE VIEW vw_funcionarios_com_salario AS
 SELECT 
@@ -31,6 +30,12 @@ SELECT
 	hire_date as dt_admissao
 FROM hr.employees;
 
+- Crie uma view chamada vw_funcionarios_com_salario que mostre os nomes e salários dos funcionários.
+
+CREATE VIEW vw_funcionarios_com_salario AS
+SELECT nome, salario
+FROM funcionarios;
+
 - Consultando uma View: Crie uma consulta para exibir todos os funcionários que estão na view vw_funcionarios_com_salario.
 
 SELECT * FROM vw_funcionarios_com_salario;
@@ -39,23 +44,49 @@ ________________________________________________________________________________
 - Subconsulta no WHERE: Na tabela produtos, você tem as colunas id_produto, nome_produto e preco.
 Na tabela vendas, você tem id_produto e quantidade_vendida. Crie uma consulta para listar os produtos cujo preço é maior do que o preço médio de todos os produtos.
 
+SELECT nome_produto, preco
+FROM produtos
+WHERE preco > (SELECT AVG(preco) FROM produtos);
+
 - Subconsulta no SELECT: Na tabela clientes, você tem as colunas id_cliente e nome_cliente. 
 Na tabela pedidos, você tem id_cliente e total_pedido. Crie uma consulta para exibir o nome do cliente e o valor total dos pedidos realizados por ele. 
 Utilize uma subconsulta para calcular o valor total dos pedidos.
+
+SELECT nome_cliente, 
+       (SELECT SUM(total_pedido) 
+        FROM pedidos 
+        WHERE pedidos.id_cliente = clientes.id_cliente) AS total_pedidos
+FROM clientes;
 __________________________________________________________________________________________________________________________________________________________________
 -- Questões sobre JOIN
 - INNER JOIN: Imagine que você tem as tabelas clientes (colunas id_cliente, nome_cliente) e pedidos (colunas id_cliente, id_pedido, total).
 Crie uma consulta para listar o nome dos clientes e o valor total dos pedidos realizados por eles, utilizando INNER JOIN.
 
+SELECT clientes.nome_cliente, pedidos.total
+FROM clientes
+INNER JOIN pedidos ON clientes.id_cliente = pedidos.id_cliente;
+
 - LEFT JOIN: Suponha que você tenha as tabelas departamentos (colunas id_departamento, nome_departamento) e 
 funcionarios (colunas id_funcionario, nome_funcionario, departamento_id). Crie uma consulta para listar todos os departamentos 
 e os nomes dos funcionários que pertencem a cada departamento. Se um departamento não tiver funcionários, ele também deve aparecer na consulta.
+
+SELECT departamentos.nome_departamento, funcionarios.nome_funcionario
+FROM departamentos
+LEFT JOIN funcionarios ON departamentos.id_departamento = funcionarios.departamento_id;
 __________________________________________________________________________________________________________________________________________________________________
 -- Questões sobre Tipo de Dados (Data)
 - Tipo de Dado Data: Você tem uma tabela eventos com a coluna data_evento do tipo DATE. 
 Crie uma consulta para listar todos os eventos que ocorreram após 1º de janeiro de 2024.
 
+SELECT nome_evento, data_evento
+FROM eventos
+WHERE data_evento > '2024-01-01';
+
 - Tipo de Dado DateTime: Considerando a tabela pedidos com a coluna data_pedido do tipo DATETIME, 
 crie uma consulta para listar todos os pedidos realizados no mês de dezembro de 2024.
+
+SELECT id_pedido, data_pedido
+FROM pedidos
+WHERE YEAR(data_pedido) = 2024 AND MONTH(data_pedido) = 12;
 __________________________________________________________________________________________________________________________________________________________________
 
