@@ -89,3 +89,45 @@ SELECT id_pedido, data_pedido
 FROM pedidos
 WHERE YEAR(data_pedido) = 2024 AND MONTH(data_pedido) = 12;
 __________________________________________________________________________________________________________________________________________________________________
+QUESTÃO 1: Listar todas as vendas.
+SELECT *
+FROM vendas;
+
+QUESTÃO 2: Listar vendas acima de R$ 500,00.
+SELECT * 
+FROM vendas
+WHERE valor_venda > 500.00;
+
+QUESTÃO 3: Mostrar as categorias com vendas abaixo de R$ 300,00.
+SELECT categoria_produtos, 
+FROM vendas
+WHERE valor_venda < 300.00;
+GROUP BY categoria_produtos
+
+QUESTÃO 4: Encontrar a menor venda em cada categoria.
+SELECT categoria_produto, MIN(valor_venda) as menor_valor_renda
+FROM vendas
+GROUP BY categoria_produto;
+
+QUESTÃO 5: Total de vendas por categoria.
+SELECT categoria_produto, SUM(valor_venda) as total_venda_categoria
+FROM vendas
+GROUP BY categoria_produto;
+
+QUESTÃO 6: Filtrar vendas de uma categoria específica.
+SELECT categoria_produto,
+FROM vendas
+WHERE categoria_produto = 'Eletronicos';
+GROUP BY categoria_produto
+
+QUESTÃO 7: Identificar categorias com valores de venda superiores a R$ 1.000,00.
+SELECT categoria_produto, max(valor_venda) maior_valor_renda
+FROM vendas
+WHERE valor_renda > 1000;
+GROUP BY categoria_produto
+
+QUESTÃO 8: Retornar a quantidade de vendas em cada categoria.
+SELECT categoria_produto, COUNT(id_venda) as qntd_vendas_categoria
+FROM vendas
+GROUP BY categoria_produto
+
