@@ -14,5 +14,13 @@ public class ExerciciosArrayList {
 
         //exibindos os nomes
         System.out.println("Lista dos nomes: " + nomes);
+
+        //removendo o terceiro nome
+        nomes.remove(2);
+
+        //substituindo o ultimo nome
+        nomes.set(nomes.size() - 1, "João");
+
+        System.out.println("Lista Final: " + nomes);
     }
 }
